@@ -36,7 +36,9 @@
             </caption>
             <thead>
               <tr>
-                <th class="caption-with-letter-spacing small-hide medium-hide" scope="col"># In Diagram</th>
+                <th class="caption-with-letter-spacing small-hide medium-hide" scope="col">
+                  {{ 'sections.quick_order_list.in_diagram' | t }}
+                </th>
                 <th class="caption-with-letter-spacing" scope="col">
                   {%- if product.has_only_default_variant -%}
                     {{ 'sections.quick_order_list.product' | t }}
