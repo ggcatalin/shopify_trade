@@ -643,7 +643,10 @@ h3 .icon-arrow,
   width: 20px;
   height: 20px;
 }
-
+.list-social .svg-wrapper{
+  width: 40px;
+  height: 40px;
+}
 .svg-wrapper > svg {
   height: 100%;
   width: 100%;

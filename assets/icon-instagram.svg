@@ -1,1 +1,11 @@
-<svg class="icon icon-instagram" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 82.5 82.5" style="enable-background:new 0 0 82.5 82.5;" xml:space="preserve"> <style type="text/css"> .st0{fill:none;stroke:#001932;stroke-width:3;stroke-miterlimit:10;} .st1{fill:#001932;} </style> <path class="st0" d="M60.4,81H22.1C10.7,81,1.5,71.8,1.5,60.4V22.1c0-11.4,9.2-20.6,20.6-20.6h38.3C71.8,1.5,81,10.7,81,22.1v38.3 C81,71.8,71.8,81,60.4,81z"/> <circle class="st0" cx="41.2" cy="41.2" r="20.3"/> <circle class="st1" cx="64.7" cy="17" r="5.9"/> </svg> 
+<svg class="icon icon-instagram" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 82.5 82.5" style="enable-background:new 0 0 82.5 82.5;" xml:space="preserve">
+<style type="text/css">
+	.st0inst{fill:none;stroke:#001932;stroke-width:3;stroke-miterlimit:10;}
+	.st1inst{fill:#001932;}
+</style>
+<path class="st0inst" d="M60.4,81H22.1C10.7,81,1.5,71.8,1.5,60.4V22.1c0-11.4,9.2-20.6,20.6-20.6h38.3C71.8,1.5,81,10.7,81,22.1v38.3
+	C81,71.8,71.8,81,60.4,81z"/>
+<circle class="st0inst" cx="41.2" cy="41.2" r="20.3"/>
+<circle class="st1inst" cx="64.7" cy="17" r="5.9"/>
+</svg>
