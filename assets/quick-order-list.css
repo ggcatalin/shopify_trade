@@ -483,7 +483,7 @@ quick-order-list .pagination-wrapper {
   }
 
   .quick-order-list__table th + th {
-    padding-left: 5.4rem;
+    padding-left: 1.4rem;
   }
 
   .quick-order-list__table .quick-order-list__table-heading--wide + .quick-order-list__table-heading--wide {
@@ -511,9 +511,9 @@ quick-order-list .pagination-wrapper {
   .variant-item {
     display: table-row;
   }
- .variant-item:nth-child(odd){
+ /* .variant-item:nth-child(odd){
     background: #fbf1d9;
-  }
+  } */
   .variant-item .variant-item__price {
     text-align: right;
   }
