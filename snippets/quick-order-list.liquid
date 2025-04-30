@@ -170,13 +170,19 @@
               {% comment %} Populated by JS {% endcomment %}
             </span>
           </div>
-          <div class="quick-order-list__total-items">
+          {% comment %} <div class="quick-order-list__total-items">
             <span>
               {{ items_in_cart }}
             </span>
             <p class="h5">{{ 'sections.quick_order_list.total_items' | t }}</p>
-          </div>
+          </div> {% endcomment %}
           <div class="quick-order-list-total__price">
+            <div class="quick-order-list__total-items">
+              <span>
+                {{ items_in_cart }}
+              </span>
+              <p class="h5">{{ 'sections.quick_order_list.total_items' | t }}</p>
+            </div>
             <div class="totals__product-total">
               <span class="totals__subtotal-value">
                 {% comment %} TODO: enable theme-check once `line_items_for` is accepted as valid filter {% endcomment %}
