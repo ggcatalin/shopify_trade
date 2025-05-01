@@ -78,7 +78,7 @@
 
             <tbody>
               {%- if product.has_only_default_variant -%}
-                {%- render 'quick-order-list-row',
+                {%- render 'torch-quick-order-list-row',
                   item: product,
                   image: product.featured_media,
                   sku: product.selected_or_first_available_variant.sku,
@@ -88,17 +88,43 @@
                   is_modal: is_modal
                 -%}
               {%- else -%}
-                {%- for variant in product.variants -%}
-                  {%- render 'quick-order-list-row',
-                    item: variant,
-                    image: variant.image,
-                    sku: variant.sku,
-                    variant: variant,
-                    show_image: show_image,
-                    show_sku: show_sku,
-                    is_modal: is_modal
-                  -%}
-                {%- endfor -%}
+                {% assign materials_string = 'sections.quick_order_list.torch_materials' | t %}
+{% assign materials = materials_string | split: "," %}
+
+{% assign materials_labels_string = 'sections.quick_order_list.torch_materials_labels' | t %}
+{% assign materials_labels = materials_labels_string | split: "," %}
+
+{% for material in materials %}
+  {% assign index = forloop.index0 %}
+  {% assign label = materials_labels[index] %}
+
+  {%- assign has_metafield = false -%}
+
+  {%- for variant in product.variants -%}
+    {%- if variant.metafields.custom[material] -%}
+      {% assign has_metafield = true %}
+      {% break %}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if has_metafield -%}
+    <tr><td colspan="10" class="torch_material">{{ label }}</td></tr>
+
+    {%- for variant in product.variants -%}
+      {%- if variant.metafields.custom[material] -%}
+        {%- render 'torch-quick-order-list-row',
+          item: variant,
+          image: variant.image,
+          sku: variant.sku,
+          variant: variant,
+          show_image: show_image,
+          show_sku: show_sku,
+          is_modal: is_modal
+        -%} 
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{% endfor %}
               {%- endif -%}
             </tbody>
           </table>
