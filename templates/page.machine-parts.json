@@ -1,0 +1,121 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "collection_list_RgfPYK": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_MEwUtb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hvac"
+          }
+        },
+        "featured_collection_LKUgJd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hvac-8000"
+          }
+        },
+        "featured_collection_Dw9YQK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dl-8000"
+          }
+        },
+        "featured_collection_b3WKJG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "520-dl"
+          }
+        },
+        "featured_collection_Ef7cxz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "510-sl"
+          }
+        },
+        "featured_collection_rqxjNT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sl8000"
+          }
+        },
+        "featured_collection_EXKgpN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fabricator"
+          }
+        },
+        "featured_collection_7XzmWK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fabricator-pre-2012"
+          }
+        },
+        "featured_collection_h7b8Ej": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vi-stream"
+          }
+        },
+        "featured_collection_4N8rk7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "elite"
+          }
+        },
+        "featured_collection_Yazhr3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "edge-king"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_MEwUtb",
+        "featured_collection_LKUgJd",
+        "featured_collection_Dw9YQK",
+        "featured_collection_b3WKJG",
+        "featured_collection_Ef7cxz",
+        "featured_collection_rqxjNT",
+        "featured_collection_EXKgpN",
+        "featured_collection_7XzmWK",
+        "featured_collection_h7b8Ej",
+        "featured_collection_4N8rk7",
+        "featured_collection_Yazhr3"
+      ],
+      "settings": {
+        "title": "Machine Parts",
+        "heading_size": "h1",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collection_list_RgfPYK"
+  ]
+}
