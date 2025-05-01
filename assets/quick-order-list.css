@@ -685,4 +685,19 @@ quick-order-list .tax-note {
   color: #fff;
   padding-left: 10px !important;
   line-height: 1;
+
+}
+
+@media screen and (max-width: 989px) {
+  tr:has(.torch_material) {
+    display: grid;
+    grid-template-rows: repeat(1, auto) !important;
+    grid-template-columns: repeat(1, auto) !important;
+    grid-template-areas: none !important;
+    margin-bottom: 10px;
+  }
+
+  .torch_material {
+    padding: 8px !important;
+  }
 }
