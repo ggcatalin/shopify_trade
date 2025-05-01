@@ -17,6 +17,61 @@
         "padding_bottom": 28
       }
     },
+    "multicolumn_VHtNyy": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_GGphCB": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/kaliburn_logo.gif",
+            "title": "",
+            "text": "<p>Formerly Innerlogic</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_AFtVbw": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_rAHVck": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_GGphCB",
+        "column_AFtVbw",
+        "column_rAHVck"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Order your plasma torch consumables online and make it both easier and faster to get them.Streamlining this process allows you to spend more time cutting with your CNC machine, increasing profits.",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "Button label",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "collection_list_yGeW3i": {
       "type": "collection-list",
       "blocks": {
@@ -60,6 +115,7 @@
   },
   "order": [
     "main",
+    "multicolumn_VHtNyy",
     "collection_list_yGeW3i"
   ]
 }
