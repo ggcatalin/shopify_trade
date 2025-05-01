@@ -128,7 +128,7 @@
             "image": "shopify://shop_images/HVAC510-Home.png",
             "title": "Machine Parts",
             "text": "",
-            "link_label": "",
+            "link_label": "View Categories",
             "link": "shopify://pages/machine-parts"
           }
         },
