@@ -58,6 +58,7 @@
       <span class="variant-item__name h4 break">{{ 'sections.quick_order_list.in_diagram' | t }}: {{ item.metafields.custom.indiagram | escape }}</span>
       
       <span class="variant-item__name h4 break">{{ item.title | escape }}</span>
+       <span class="variant-item__name h4 break">{{ item.metafields.custom.part_no | escape }}</span>
       {%- if show_sku -%}
         <span class="variant-item__sku break">{{ sku | escape }}</span>
       {%- endif -%}
@@ -172,7 +173,7 @@
     {% # theme-check-enable %}
   </td>
     <td class="variant-item__description small-hide medium-hide">
-    <span class="variant-item__name h4 break">{{ item.metafields.custom.part_description | escape }}</span>
+    <span class="variant-item__name h4 break">{{ item.metafields.custom.part_no | escape }}</span>
   </td>
   <td class="variant-item__quantity">
     {%- liquid
