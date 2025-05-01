@@ -538,9 +538,14 @@ quick-order-list .pagination-wrapper {
     width: calc(((11rem / var(--font-body-scale) + var(--inputs-border-width) * 2)));
     margin-left: calc(15px + 3.4rem);
     flex-direction: column;
-    margin-left: 56.7%;
+    margin-left: 48%;
   }
+  /* .quick-order-list__total-items p {
+    text-align: right;
+    } */
 }
+ 
+
 
 @media screen and (min-width: 990px) {
 
@@ -598,9 +603,6 @@ quick-order-list .pagination-wrapper {
   margin-bottom: 0;
 }
 
-.quick-order-list__total-items p {
-  text-align: right;
-}
 
 .quick-order-list-total__info {
   display: flex;
