@@ -88,17 +88,17 @@
         "padding_bottom": 52
       }
     },
-    "rich_text_8NjAyt": {
+    "rich_text_3Fj4kG": {
       "type": "rich-text",
       "blocks": {
-        "heading_9WcFcB": {
+        "heading_d7fadX": {
           "type": "heading",
           "settings": {
             "heading": "<strong>Online Store</strong>",
             "heading_size": "h2"
           }
         },
-        "text_mFUREn": {
+        "text_FpTnEA": {
           "type": "text",
           "settings": {
             "text": ""
@@ -106,10 +106,9 @@
         }
       },
       "block_order": [
-        "heading_9WcFcB",
-        "text_mFUREn"
+        "heading_d7fadX",
+        "text_FpTnEA"
       ],
-      "disabled": true,
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",
@@ -118,6 +117,52 @@
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
+      }
+    },
+    "multicolumn_8QwFJj": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_PqrdNw": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/HVAC510-Home.png",
+            "title": "Machine Parts",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://pages/machine-parts"
+          }
+        },
+        "column_Kzqcfr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/monarch_tools_large_52e7bf6d-4f78-4366-ba3f-f6b035c4fcd3.png",
+            "title": "Torch Parts",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://pages/torch-parts"
+          }
+        }
+      },
+      "block_order": [
+        "column_PqrdNw",
+        "column_Kzqcfr"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "collection_list": {
@@ -377,7 +422,8 @@
   "order": [
     "image_banner",
     "featured_collection1",
-    "rich_text_8NjAyt",
+    "rich_text_3Fj4kG",
+    "multicolumn_8QwFJj",
     "collection_list",
     "multicolumn1",
     "featured_collection2",
