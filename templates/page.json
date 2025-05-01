@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -6,9 +15,106 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "collection_list_yGeW3i": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_bbyGVV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hvac"
+          }
+        },
+        "featured_collection_yAPADd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hvac-8000"
+          }
+        },
+        "featured_collection_WdFDqW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dl-8000"
+          }
+        },
+        "featured_collection_MakdJd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "520-dl"
+          }
+        },
+        "featured_collection_yM7FUc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "510-sl"
+          }
+        },
+        "featured_collection_m9HCFx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sl8000"
+          }
+        },
+        "featured_collection_zmKCPN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fabricator"
+          }
+        },
+        "featured_collection_TCFURq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fabricator-pre-2012"
+          }
+        },
+        "featured_collection_TxjHVH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vi-stream"
+          }
+        },
+        "featured_collection_7YhdHF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "elite"
+          }
+        },
+        "featured_collection_Byc8cR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "edge-king"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_bbyGVV",
+        "featured_collection_yAPADd",
+        "featured_collection_WdFDqW",
+        "featured_collection_MakdJd",
+        "featured_collection_yM7FUc",
+        "featured_collection_m9HCFx",
+        "featured_collection_zmKCPN",
+        "featured_collection_TCFURq",
+        "featured_collection_TxjHVH",
+        "featured_collection_7YhdHF",
+        "featured_collection_Byc8cR"
+      ],
+      "settings": {
+        "title": "Machine Parts",
+        "heading_size": "h2",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "collection_list_yGeW3i"
   ]
 }
