@@ -23,7 +23,7 @@
         "column_GGphCB": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/kaliburn_logo.gif",
+            "image": "shopify://shop_images/kaliburn-logo_new_f2706046-689b-414a-87ec-4731a83630ea.png",
             "title": "",
             "text": "<p>Formerly Innerlogic</p>",
             "link_label": "",
@@ -33,8 +33,9 @@
         "column_AFtVbw": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "image": "shopify://shop_images/hyperrtherrm_new.png",
+            "title": "",
+            "text": "",
             "link_label": "",
             "link": ""
           }
@@ -42,8 +43,9 @@
         "column_rAHVck": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "image": "shopify://shop_images/american-torch-tip_newx.png",
+            "title": "",
+            "text": "<p><em>Aftermarket Kaliburn consumables</em><br/></p>",
             "link_label": "",
             "link": ""
           }
