@@ -11,9 +11,67 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "multicolumn_VHtNyy": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_GGphCB": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/kaliburn-logo_new_f2706046-689b-414a-87ec-4731a83630ea.png",
+            "title": "",
+            "text": "<p>Formerly Innerlogic</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_AFtVbw": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/hyperrtherrm_new.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_rAHVck": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/american-torch-tip_newx.png",
+            "title": "",
+            "text": "<p><em>Aftermarket Kaliburn consumables</em><br/></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_GGphCB",
+        "column_AFtVbw",
+        "column_rAHVck"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Order your plasma torch consumables online and make it both easier and faster to get them.Streamlining this process allows you to spend more time cutting with your CNC machine, increasing profits.",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "collection_list_yGeW3i": {
@@ -22,86 +80,30 @@
         "featured_collection_bbyGVV": {
           "type": "featured_collection",
           "settings": {
-            "collection": "hvac"
+            "collection": "fileline"
           }
         },
         "featured_collection_yAPADd": {
           "type": "featured_collection",
           "settings": {
-            "collection": "hvac-8000"
+            "collection": "hd"
           }
         },
         "featured_collection_WdFDqW": {
           "type": "featured_collection",
           "settings": {
-            "collection": "dl-8000"
-          }
-        },
-        "featured_collection_MakdJd": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "520-dl"
-          }
-        },
-        "featured_collection_yM7FUc": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "510-sl"
-          }
-        },
-        "featured_collection_m9HCFx": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "sl8000"
-          }
-        },
-        "featured_collection_zmKCPN": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "fabricator"
-          }
-        },
-        "featured_collection_TCFURq": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "fabricator-pre-2012"
-          }
-        },
-        "featured_collection_TxjHVH": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "vi-stream"
-          }
-        },
-        "featured_collection_7YhdHF": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "elite"
-          }
-        },
-        "featured_collection_Byc8cR": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "edge-king"
+            "collection": "hpr"
           }
         }
       },
       "block_order": [
         "featured_collection_bbyGVV",
         "featured_collection_yAPADd",
-        "featured_collection_WdFDqW",
-        "featured_collection_MakdJd",
-        "featured_collection_yM7FUc",
-        "featured_collection_m9HCFx",
-        "featured_collection_zmKCPN",
-        "featured_collection_TCFURq",
-        "featured_collection_TxjHVH",
-        "featured_collection_7YhdHF",
-        "featured_collection_Byc8cR"
+        "featured_collection_WdFDqW"
       ],
       "settings": {
-        "title": "Machine Parts",
-        "heading_size": "h2",
+        "title": "Torch Parts",
+        "heading_size": "h1",
         "image_ratio": "adapt",
         "columns_desktop": 2,
         "color_scheme": "scheme-1",
@@ -115,6 +117,7 @@
   },
   "order": [
     "main",
+    "multicolumn_VHtNyy",
     "collection_list_yGeW3i"
   ]
 }

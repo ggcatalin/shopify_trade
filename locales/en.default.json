@@ -358,6 +358,8 @@
       "title": "Page title"
     },
     "quick_order_list": {
+      "torch_materials": "mild_steel,stainless_steel,aluminum,marking,empty",
+      "torch_materials_labels": "Mild Steel,Stainless Steel,Aluminum,Marking,&nbsp;",
       "in_diagram": "# In Diagram",
       "product_total": "Product subtotal",
       "view_cart": "View cart",

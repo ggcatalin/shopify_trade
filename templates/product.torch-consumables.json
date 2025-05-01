@@ -41,8 +41,8 @@
         "padding_bottom": 36
       }
     },
-    "quick-order-list": {
-      "type": "quick-order-list",
+    "torch-quick-order-list": {
+      "type": "torch-quick-order-list",
       "settings": {
         "variants_per_page": 50,
         "show_image": false,
@@ -74,7 +74,7 @@
   },
   "order": [
     "main",
-    "quick-order-list",
+    "torch-quick-order-list",
     "related-products"
   ]
 }
