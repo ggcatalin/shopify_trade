@@ -97,6 +97,7 @@ product-info {
   }
   .product__info-container {
     margin: 0 auto !important;
+    max-width: 100% !important;
 }
 }
 
