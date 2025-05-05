@@ -8,7 +8,7 @@
   - params: {Object} URL parameters (optional)
 
   Usage:
-  {% render 'torch-quick-order-list', product: product %}
+  {% render 'torch-quick-order-list', product: product, params: params %}
 {% endcomment %}
 
 {% comment %} TODO: enable theme-check once `line_items_for` is accepted as valid filter {% endcomment %}
@@ -16,7 +16,7 @@
 {%- assign items_in_cart = cart | line_items_for: product | sum: 'quantity' -%}
 {% # theme-check-enable %}
 
-  <h3>URL Parameters:</h3>
+  <h3>URL Parameterss:</h3>
   <ul>
     {% for param in params %}
       <li><strong>{{ param[0] }}:</strong> {{ param[1] }}</li>
