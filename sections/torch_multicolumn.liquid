@@ -23,6 +23,8 @@
   endif
 -%}
 
+
+
 <div class="torch-multicolumn color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
 
   <div
@@ -123,74 +125,77 @@
                 </div>
               {%- endif -%}
             {% if blocks_with_content == 1 %}
-                <label for="kaliburn-products">Select a Kaliburn Products:</label>
+                <label for="kaliburn-products">Select a Kaliburn Product:</label>
                 <select id="kaliburn-products">
                   <option value="">-- Choose a product --</option>
                   {% for product in collections.all.products %}
                     {% if product.metafields.custom.torchmanufacturer == "Kaliburn" %}
-                      <option value="{{ product.url }}">{{ product.title }}</option>
+                      <option 
+                        value="{{ product.url }}">
+                        {{ product.title }}
+                      </option>
                     {% endif %}
                   {% endfor %}
                 </select>
-                  {% assign materials_string = 'sections.quick_order_list.torch_materials' | t %}
-                {% assign materials = materials_string | split: "," %}
-                {% assign labels_string = 'sections.quick_order_list.torch_materials_labels' | t %}
-                {% assign labels = labels_string | split: "," %}
-
-                <select id="material-filter" onchange="filterByMaterial(this.value)">
-                  <option value="">All</option>
-                  {% for material in materials %}
-                    {% assign label = labels[forloop.index0] %}
-                    <option value="{{ material }}">{{ label }}</option>
-                  {% endfor %}
+                <!-- The second select, initially hidden -->
+                <select id="material-select" style="display:none; margin-top:10px;">
+                  <option value="">-- Choose a material --</option>
                 </select>
+                <button style="display:none; margin-top:10px;"
+                type="button"
+                id="submitpagefilteredkalimbur"
+                name="submitpagefiltered"
+               
+              >Submit</button>
             {% endif %}
-                {% if blocks_with_content == 2 %}
-                <label for="kaliburn-products">Select a Hypertherm Products:</label>
-                <select id="kaliburn-products">
-                  <option value="">-- Choose a product --</option>
-                  {% for product in collections.all.products %}
-                    {% if product.metafields.custom.torchmanufacturer == "Hypertherm" %}
-                      <option value="{{ product.url }}">{{ product.title }}</option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-                  {% assign materials_string = 'sections.quick_order_list.torch_materials' | t %}
-                {% assign materials = materials_string | split: "," %}
-                {% assign labels_string = 'sections.quick_order_list.torch_materials_labels' | t %}
-                {% assign labels = labels_string | split: "," %}
-
-                <select id="material-filter" onchange="filterByMaterial(this.value)">
-                  <option value="">All</option>
-                  {% for material in materials %}
-                    {% assign label = labels[forloop.index0] %}
-                    <option value="{{ material }}">{{ label }}</option>
-                  {% endfor %}
-                </select>
-            {% endif %}
-                {% if blocks_with_content == 3 %}
-                <label for="kaliburn-products">Select a ATTC Products:</label>
-                <select id="kaliburn-products">
-                  <option value="">-- Choose a product --</option>
-                  {% for product in collections.all.products %}
-                    {% if product.metafields.custom.torchmanufacturer == "ATTC" %}
-                      <option value="{{ product.url }}">{{ product.title }}</option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-                  {% assign materials_string = 'sections.quick_order_list.torch_materials' | t %}
-                {% assign materials = materials_string | split: "," %}
-                {% assign labels_string = 'sections.quick_order_list.torch_materials_labels' | t %}
-                {% assign labels = labels_string | split: "," %}
-
-                <select id="material-filter" onchange="filterByMaterial(this.value)">
-                  <option value="">All</option>
-                  {% for material in materials %}
-                    {% assign label = labels[forloop.index0] %}
-                    <option value="{{ material }}">{{ label }}</option>
-                  {% endfor %}
-                </select>
-            {% endif %}
+            {% if blocks_with_content == 2 %}
+              <label for="hypertherm-products">Select a Hypertherm Product:</label>
+              <select id="hypertherm-products">
+                <option value="">-- Choose a product --</option>
+                {% for product in collections.all.products %}
+                  {% if product.metafields.custom.torchmanufacturer == "Hypertherm" %}
+                    <option 
+                      value="{{ product.url }}">
+                      {{ product.title }}
+                    </option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+              <!-- The second select, initially hidden -->
+              <select id="material-select-hypertherm" style="display:none; margin-top:10px;">
+                <option value="">-- Choose a material --</option>
+              </select>
+              <button style="display:none; margin-top:10px;"
+              type="button"
+              id="submitpagefilteredhypertherm"
+              name="submitpagefiltered"
+             
+            >Submit</button>
+          {% endif %}
+          {% if blocks_with_content == 3 %}
+            <label for="attc-products">Select a ATTC Product:</label>
+            <select id="attc-products">
+              <option value="">-- Choose a product --</option>
+              {% for product in collections.all.products %}
+                {% if product.metafields.custom.torchmanufacturer == "ATTC" %}
+                  <option 
+                    value="{{ product.url }}">
+                    {{ product.title }}
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select>
+            <!-- The second select, initially hidden -->
+            <select id="material-select-attc" style="display:none; margin-top:10px;">
+              <option value="">-- Choose a material --</option>
+            </select>
+            <button style="display:none; margin-top:10px;"
+            type="button"
+            id="submitpagefilteredattc"
+            name="submitpagefiltered"
+           
+          >Submit</button>
+        {% endif %}
               <div class="torch-multicolumn-card__info">
                          
           
@@ -264,7 +269,190 @@
     </div>
   </div>
 </div>
+<script>
 
+{% assign materials_string = 'sections.quick_order_list.torch_materials' | t %}
+{% assign materials = materials_string | split: "," %}
+{% assign materials_labels_string = 'sections.quick_order_list.torch_materials_labels' | t %}
+{% assign materials_labels = materials_labels_string | split: "," %}
+
+  window.kaliburnProductVariants = {
+    {% for product in collections.all.products %}
+      {% assign my_list = "" | split: "" %}
+      {% assign my_list_label = "" | split: "" %}
+      {% if product.metafields.custom.torchmanufacturer == "Kaliburn" %}
+        "{{ product.url }}": 
+          {% for variant in product.variants %}
+            {% for materialsid in materials %}
+              {% if materialsid!="empty" %}
+                {% assign index = forloop.index0 %}
+                {% assign label = materials_labels[index] %}
+                {% if  variant.metafields.custom[materialsid] %}                
+                  {% assign my_list = label | concat: my_list %}
+                  {% assign my_list_label = materialsid | concat: my_list_label %}
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+          {% unless forloop.last %}{% endunless %}
+          {% endfor %}
+        {% unless forloop.last %}{% endunless %}
+          { "material": "{{ my_list | uniq | join: "," }}", "material_label": "{{ my_list_label | uniq | join: "," }}"}
+      {% endif %}
+    {% endfor %}
+  };
+  window.hyperthermProductVariants = {
+    {% for product in collections.all.products %}
+      {% assign my_list = "" | split: "" %}
+      {% assign my_list_label = "" | split: "" %}
+      {% if product.metafields.custom.torchmanufacturer == "Hypertherm" %}
+        "{{ product.url }}": 
+          {% for variant in product.variants %}
+            {% for materialsid in materials %}
+              {% if materialsid!="empty" %}
+                {% assign index = forloop.index0 %}
+                {% assign label = materials_labels[index] %}
+                {% if  variant.metafields.custom[materialsid] %}                
+                  {% assign my_list = label | concat: my_list %}
+                  {% assign my_list_label = materialsid | concat: my_list_label %}
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+          {% unless forloop.last %}{% endunless %}
+          {% endfor %}
+        {% unless forloop.last %}{% endunless %}
+          { "material": "{{ my_list | uniq | join: "," }}", "material_label": "{{ my_list_label | uniq | join: "," }}"}
+      {% endif %}
+    {% endfor %}
+  };
+  window.attcProductVariants = {
+    {% for product in collections.all.products %}
+      {% assign my_list = "" | split: "" %}
+      {% assign my_list_label = "" | split: "" %}
+      {% if product.metafields.custom.torchmanufacturer == "ATTC" %}
+        "{{ product.url }}": 
+          {% for variant in product.variants %}
+            {% for materialsid in materials %}
+              {% if materialsid!="empty" %}
+                {% assign index = forloop.index0 %}
+                {% assign label = materials_labels[index] %}
+                {% if  variant.metafields.custom[materialsid] %}                
+                  {% assign my_list = label | concat: my_list %}
+                  {% assign my_list_label = materialsid | concat: my_list_label %}
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+          {% unless forloop.last %}{% endunless %}
+          {% endfor %}
+        {% unless forloop.last %}{% endunless %}
+          { "material": "{{ my_list | uniq | join: "," }}", "material_label": "{{ my_list_label | uniq | join: "," }}"}
+      {% endif %}
+    {% endfor %}
+  };
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var productSelect = document.getElementById('kaliburn-products');
+  var materialSelect = document.getElementById('material-select');
+  var submitpagefilteredkalimbur = document.getElementById('submitpagefilteredkalimbur');
+
+  productSelect.addEventListener('change', function() {
+    // Clear previous options
+    materialSelect.innerHTML = '<option value="">-- Choose a material --</option>';
+
+    var selectedProductUrl = productSelect.value;
+    var variants = window.kaliburnProductVariants[selectedProductUrl];
+
+    if (variants) {
+      materialSet=variants.material.split(",");
+      materialSetLabel=variants.material_label.split(",");
+      materialSet.forEach(function(material,index) {
+        var opt = document.createElement('option');
+        opt.value = materialSetLabel[index];
+        opt.textContent = material;
+        materialSelect.appendChild(opt);
+      });
+
+      materialSelect.style.display = '';
+    } else {
+      materialSelect.style.display = 'none';
+    }
+  });
+  materialSelect.addEventListener('change', function() {
+    submitpagefilteredkalimbur.style.display = '';
+  });
+  submitpagefilteredkalimbur.addEventListener('click', function() {
+    window.location.href = productSelect.value+"#"+materialSelect.value;
+  });
+});
+document.addEventListener('DOMContentLoaded', function() {
+  var productSelect = document.getElementById('hypertherm-products');
+  var materialSelect = document.getElementById('material-select-hypertherm');
+  var submitpagefilteredhypertherm = document.getElementById('submitpagefilteredhypertherm');
+
+  productSelect.addEventListener('change', function() {
+    // Clear previous options
+    materialSelect.innerHTML = '<option value="">-- Choose a material --</option>';
+
+    var selectedProductUrl = productSelect.value;
+    var variants = window.hyperthermProductVariants[selectedProductUrl];
+
+    if (variants) {
+      materialSet=variants.material.split(",");
+      materialSetLabel=variants.material_label.split(",");
+      materialSet.forEach(function(material,index) {
+        var opt = document.createElement('option');
+        opt.value = materialSetLabel[index];
+        opt.textContent = material;
+        materialSelect.appendChild(opt);
+      });
+
+      materialSelect.style.display = '';
+    } else {
+      materialSelect.style.display = 'none';
+    }
+  });
+  materialSelect.addEventListener('change', function() {
+    submitpagefilteredhypertherm.style.display = '';
+  });
+  submitpagefilteredhypertherm.addEventListener('click', function() {
+    window.location.href = productSelect.value+"#"+materialSelect.value;
+  });
+});
+document.addEventListener('DOMContentLoaded', function() {
+  var productSelect = document.getElementById('attc-products');
+  var materialSelect = document.getElementById('material-select-attc');
+  var submitpagefilteredattc = document.getElementById('submitpagefilteredattc');
+
+  productSelect.addEventListener('change', function() {
+    // Clear previous options
+    materialSelect.innerHTML = '<option value="">-- Choose a material --</option>';
+
+    var selectedProductUrl = productSelect.value;
+    var variants = window.attcProductVariants[selectedProductUrl];
+
+    if (variants) {
+      materialSet=variants.material.split(",");
+      materialSetLabel=variants.material_label.split(",");
+      materialSet.forEach(function(material,index) {
+        var opt = document.createElement('option');
+        opt.value = materialSetLabel[index];
+        opt.textContent = material;
+        materialSelect.appendChild(opt);
+      });
+
+      materialSelect.style.display = '';
+    } else {
+      materialSelect.style.display = 'none';
+    }
+  });
+  materialSelect.addEventListener('change', function() {
+    submitpagefilteredattc.style.display = '';  
+  });
+  submitpagefilteredattc.addEventListener('click', function() {
+    window.location.href = productSelect.value+"#"+materialSelect.value;
+  });
+});
+</script>
 {% schema %}
 {
   "name": "t:sections.torch_multicolumn.name",
