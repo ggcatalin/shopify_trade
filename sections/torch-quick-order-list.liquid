@@ -23,7 +23,8 @@
 {% render 'torch-quick-order-list',
   product: product,
   show_image: section.settings.show_image,
-  show_sku: section.settings.show_sku
+  show_sku: section.settings.show_sku,
+  params: request.params
 %}
 
 {% schema %}
