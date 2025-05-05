@@ -14,6 +14,17 @@
 {% # theme-check-disable %}
 {%- assign items_in_cart = cart | line_items_for: product | sum: 'quantity' -%}
 {% # theme-check-enable %}
+{% if request.query != empty %}
+  {{request.query['mat']}}
+  <h3>URL Parameters:</h3>
+  <ul>
+    {% for param in request.params %}
+      <li><strong>{{ param[0] }}:</strong> {{ param[1] }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No URL parameters found.</p>
+{% endif %}
 <div class="torch-quick-order-list-container quick-order-list-container color-{{ section.settings.color_scheme }}{% unless is_modal %} gradient{% endunless %}">
   <quick-order-list
     class="page-width section-{{ section.id }}-padding"
