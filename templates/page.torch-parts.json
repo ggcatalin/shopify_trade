@@ -18,7 +18,7 @@
       }
     },
     "multicolumn_VHtNyy": {
-      "type": "multicolumn",
+      "type": "torch_multicolumn",
       "blocks": {
         "column_GGphCB": {
           "type": "column",

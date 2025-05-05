@@ -355,7 +355,8 @@
       "slide": "Slide"
     },
     "page": {
-      "title": "Page title"
+      "title": "Page title",
+      "torch_manufacturer": "kaliburn,hyoertherm,attc"
     },
     "quick_order_list": {
       "torch_materials": "mild_steel,stainless_steel,aluminum,marking,empty",
