@@ -505,6 +505,9 @@
 .footer__blocks-wrapper .footer-block.grid__item:nth-child(1){
   width: 100%!important; 
 }
+.footer__blocks-wrapper .footer-block.grid__item:nth-child(1) .footer-block__details-content{
+  justify-content: space-between;
+}
 @media(max-width: 749px){
   .footer__blocks-wrapper .footer-block.grid__item:nth-child(1) .footer-block__details-content{
     flex-direction: column;
