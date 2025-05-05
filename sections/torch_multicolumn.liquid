@@ -124,6 +124,31 @@
                   </div>
                 </div>
               {%- endif -%}
+              <div class="torch-multicolumn-card__info">
+                         
+          
+              {%- if block.settings.title != blank -%}
+                  <h3 class="inline-richtext">{{ block.settings.title }}</h3>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="rte">{{ block.settings.text }}</div>
+                {%- endif -%}
+                {%- if block.settings.link_label != blank -%}
+                  <a
+                    class="link animate-arrow"
+                    {% if block.settings.link == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.link }}"
+                    {% endif %}
+                  >
+                    {{- block.settings.link_label | escape -}}
+                    <span class="svg-wrapper"
+                      ><span class="icon-wrap">&nbsp;{{ 'icon-arrow.svg' | inline_asset_content }}</span></span
+                    >
+                  </a>
+                {%- endif -%}
+              </div>
             {% if blocks_with_content == 1 %}
                 <label for="kaliburn-products">Select a Kaliburn Product:</label>
                 <select id="kaliburn-products">
@@ -196,31 +221,7 @@
            
           >Submit</button>
         {% endif %}
-              <div class="torch-multicolumn-card__info">
-                         
-          
-              {%- if block.settings.title != blank -%}
-                  <h3 class="inline-richtext">{{ block.settings.title }}</h3>
-                {%- endif -%}
-                {%- if block.settings.text != blank -%}
-                  <div class="rte">{{ block.settings.text }}</div>
-                {%- endif -%}
-                {%- if block.settings.link_label != blank -%}
-                  <a
-                    class="link animate-arrow"
-                    {% if block.settings.link == blank %}
-                      role="link" aria-disabled="true"
-                    {% else %}
-                      href="{{ block.settings.link }}"
-                    {% endif %}
-                  >
-                    {{- block.settings.link_label | escape -}}
-                    <span class="svg-wrapper"
-                      ><span class="icon-wrap">&nbsp;{{ 'icon-arrow.svg' | inline_asset_content }}</span></span
-                    >
-                  </a>
-                {%- endif -%}
-              </div>
+        
             </div>
           </li>
         {%- endfor -%}
@@ -350,11 +351,13 @@
   };
 </script>
 <script>
+  
+  
 document.addEventListener('DOMContentLoaded', function() {
-  var productSelect = document.getElementById('kaliburn-products');
+  const productSelect = document.getElementById('kaliburn-products');
   var materialSelect = document.getElementById('material-select');
   var submitpagefilteredkalimbur = document.getElementById('submitpagefilteredkalimbur');
-
+  
   productSelect.addEventListener('change', function() {
     // Clear previous options
     materialSelect.innerHTML = '<option value="">-- Choose a material --</option>';
@@ -452,6 +455,21 @@ document.addEventListener('DOMContentLoaded', function() {
     window.location.href = productSelect.value+"#"+materialSelect.value;
   });
 });
+window.addEventListener('pageshow', function(event) {
+  console.log(event);
+  const productSelect1 = document.getElementById('kaliburn-products');
+  const productSelect2 = document.getElementById('hypertherm-products');
+  const productSelect3 = document.getElementById('attc-products');
+  if(productSelect1.value!=""){
+    productSelect1.dispatchEvent(new Event('change'));      
+  }
+  if(productSelect2.value!=""){
+    productSelect2.dispatchEvent(new Event('change'));      
+  }
+  if(productSelect3.value!=""){
+    productSelect3.dispatchEvent(new Event('change'));      
+  }
+})
 </script>
 {% schema %}
 {
