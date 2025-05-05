@@ -539,7 +539,7 @@ quick-order-list .pagination-wrapper {
     width: calc(((11rem / var(--font-body-scale) + var(--inputs-border-width) * 2)));
     margin-left: calc(15px + 3.4rem);
     flex-direction: column;
-    margin-left: 54%;
+    margin-left: 50%;
   }
   /* .quick-order-list__total-items p {
     text-align: right;
