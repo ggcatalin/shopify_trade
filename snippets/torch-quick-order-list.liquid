@@ -109,7 +109,7 @@
   {%- endfor -%}
 
   {%- if has_metafield -%}
-    <tr><td colspan="10" class="torch_material">{{ label }}</td></tr>
+    <tr><td colspan="10" class="torch_material" id="{{material}}">{{ label }}</td></tr>
 
     {%- for variant in product.variants -%}
       {%- if variant.metafields.custom[material] -%}
