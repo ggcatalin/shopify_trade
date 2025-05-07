@@ -1,0 +1,33 @@
+<div class="sidebar-menu">
+  <div class="sidebar-menu__header">
+    <h2 class="sidebar-menu__title">Categories</h2>
+  </div>
+
+  <nav class="sidebar-menu__nav">
+    {% for collection in collections %}
+      {% if collection.products_count > 0 %}
+        <div class="sidebar-menu__category">
+          <div class="sidebar-menu__category-header">
+            <a href="{{ collection.url }}" class="sidebar-menu__category-link">
+              {{ collection.title }}
+            </a>
+          </div>
+          
+          <div class="sidebar-menu__products">
+            {% for product in collection.products limit: 5 %}
+              <a href="{{ product.url }}" class="sidebar-menu__product-link">
+                {{ product.title }}
+              </a>
+            {% endfor %}
+            
+            {% if collection.products_count > 5 %}
+              <a href="{{ collection.url }}" class="sidebar-menu__view-all">
+                View all {{ collection.products_count }} products
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </nav>
+</div>
