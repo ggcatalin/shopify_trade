@@ -14,6 +14,8 @@
 {% # theme-check-disable %}
 {%- assign items_in_cart = cart | line_items_for: product | sum: 'quantity' -%}
 {% # theme-check-enable %}
+
+
 <div class="torch-quick-order-list-container quick-order-list-container color-{{ section.settings.color_scheme }}{% unless is_modal %} gradient{% endunless %}">
   <quick-order-list
     class="page-width section-{{ section.id }}-padding"
@@ -109,7 +111,7 @@
   {%- endfor -%}
 
   {%- if has_metafield -%}
-    <tr><td colspan="10" class="torch_material" id="{{material}}">{{ label }}</td></tr>
+    <tr data-mat="{{material}}"><td colspan="10" class="torch_material"  id="{{material}}">{{ label }}</td></tr>
 
     {%- for variant in product.variants -%}
       {%- if variant.metafields.custom[material] -%}
@@ -120,7 +122,9 @@
           variant: variant,
           show_image: show_image,
           show_sku: show_sku,
-          is_modal: is_modal
+          is_modal: is_modal,
+          material: material
+
         -%} 
       {%- endif -%}
     {%- endfor -%}
@@ -335,3 +339,25 @@
     <span class="quick-order-list-error-message caption-large" role="alert"></span>
   </template>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get the 'mat' parameter from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const matParam = urlParams.get('mat');
+
+  if (matParam) {
+    // Get all table rows
+    const rows = document.querySelectorAll('tr');
+    
+    rows.forEach(row => {
+      // Check for a specific attribute or class
+      const materialAttr = row.getAttribute('data-mat'); // or row.classList.contains('some-class')
+      
+      // If the material attribute doesn't match the mat parameter, hide it
+      if (materialAttr && materialAttr !== matParam) {
+        row.style.display = 'none';
+      }
+    });
+  }
+});
+</script>
