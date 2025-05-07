@@ -359,8 +359,8 @@
       "torch_manufacturer": "kaliburn,hyoertherm,attc"
     },
     "quick_order_list": {
-      "torch_materials": "mild_steel,stainless_steel,aluminum,marking,empty",
-      "torch_materials_labels": "Mild Steel,Stainless Steel,Aluminum,Marking,&nbsp;",
+      "torch_materials": "mild_steel,stainless_steel,aluminum,marking,empty,insulation,thin_gauge_stainless_steel,1_8_to_3_8_material,26_to_10_gauge_material",
+      "torch_materials_labels": "Mild Steel,Stainless Steel,Aluminum,Marking,&nbsp;,Insulation,Thin Gauge Stainless Steel,1/8” to 3/8” material,26 to 10 gauge material",
       "in_diagram": "# In Diagram",
       "product_total": "Product subtotal",
       "view_cart": "View cart",

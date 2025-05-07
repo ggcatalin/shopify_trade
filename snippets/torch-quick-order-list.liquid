@@ -32,6 +32,7 @@
     >
       {% paginate product.variants by section.settings.variants_per_page %}
         <div class="quick-order-list__container" id="main-variant-items">
+        <span class="search_text"></span>
           <table class="quick-order-list__table">
             <caption class="visually-hidden">
               {{ 'sections.cart.title' | t }}
@@ -340,6 +341,18 @@
   </template>
 </div>
 <script>
+  window.materialsLabels = {
+    {% assign materials_string = 'sections.quick_order_list.torch_materials' | t %}
+    {% assign materials = materials_string | split: "," %}
+    {% assign labels_string = 'sections.quick_order_list.torch_materials_labels' | t %}
+    {% assign labels = labels_string | split: "," %}
+    
+    {% for material in materials %}
+      "{{ material }}": "{{ labels[forloop.index0] }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
+</script>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
   // Get the 'mat' parameter from URL
   const urlParams = new URLSearchParams(window.location.search);
@@ -358,6 +371,11 @@ document.addEventListener('DOMContentLoaded', function() {
         row.style.display = 'none';
       }
     });
+    const searchTextElement = document.querySelector('.search_text');
+    if (searchTextElement && matParam) {
+      // Update the text content
+      searchTextElement.textContent = 'Search Results: ' + materialsLabels[matParam];
+    }
   }
 });
 </script>

@@ -297,7 +297,7 @@
           {% unless forloop.last %}{% endunless %}
           {% endfor %}
         {% unless forloop.last %}{% endunless %}
-          { "material": "{{ my_list | uniq | join: "," }}", "material_label": "{{ my_list_label | uniq | join: "," }}"}
+          { "material": "{{ my_list | uniq | join: "," }}", "material_label": "{{ my_list_label | uniq | join: "," }}"},
       {% endif %}
     {% endfor %}
   };
