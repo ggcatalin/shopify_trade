@@ -77,7 +77,8 @@
 .sidebar-menu__title{
     color: #ffffff !important;
 }
-.sidebar-menu__category-title{
+.sidebar-menu__category-title,
+.sidebar-menu__collection-title{
     color: #ffffff !important;
 
 }
@@ -87,7 +88,9 @@
     color: #ffffff;
     text-decoration: none;
 }
-.sidebar-menu__products,
+.sidebar-menu__products{
+    padding-left : 0rem;
+}
 .sidebar-menu__collections{
     padding-left : 1rem;
 }
