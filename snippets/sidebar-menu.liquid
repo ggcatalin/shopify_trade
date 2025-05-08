@@ -33,7 +33,7 @@
                     {{ collection.title }}
                     </a>
                  {%else%}   
-                    {{ collection.title }}
+                    <span class="sidebar-menu__collection-title">{{ collection.title }}</span>
                 {% endif %}
                 <div class="sidebar-menu__products">
                     {% assign sorted_products = collection.products | sort: 'metafields.custom.sort_order' %}

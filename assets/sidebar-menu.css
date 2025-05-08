@@ -87,7 +87,8 @@
     color: #ffffff;
     text-decoration: none;
 }
-.sidebar-menu__products{
+.sidebar-menu__products,
+.sidebar-menu__collections{
     padding-left : 1rem;
 }
 .sidebar-menu__category-link{
