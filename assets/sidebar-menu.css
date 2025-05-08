@@ -78,7 +78,8 @@
     color: #ffffff !important;
 }
 .sidebar-menu__category-title,
-.sidebar-menu__collection-title{
+.sidebar-menu__collection-title,
+.sidebar-menu__after-market-products{
     color: #ffffff !important;
 
 }
@@ -91,6 +92,9 @@
 .sidebar-menu__products{
     padding-left : 0rem;
 }
+.sidebar-menu__product-link{
+    padding-left: 1rem;
+}
 .sidebar-menu__collections{
     padding-left : 1rem;
 }
@@ -102,8 +106,10 @@
     font-size: 15px
 }
 .sidebar-menu__category-link:hover, 
-.sidebar-menu__product-link:hover{
-      text-decoration: underline;
+.sidebar-menu__product-link:hover,
+.sidebar-menu__product-link{
+    color: #fff;;
+    text-decoration: underline;
 }
 
 /* Mobile Responsive */
