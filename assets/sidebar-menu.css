@@ -107,7 +107,7 @@
 }
 .sidebar-menu__category-link:hover, 
 .sidebar-menu__product-link:hover,
-.sidebar-menu__product-link{
+.sidebar-menu__product-link:hover{
     color: #fff;;
     text-decoration: underline;
 }
