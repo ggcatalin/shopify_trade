@@ -17,10 +17,13 @@
     
     {% comment %}Loop through unique categories{% endcomment %}
     {% for category in unique_categories %}
-       
       <div class="sidebar-menu__category">
         <div class="sidebar-menu__category-header">
-          <span class="sidebar-menu__category-title">{{ category }}</span>
+            {% if category == "Machine Parts" %}
+                <a href="pages/machine-parts" class="sidebar-menu__collection-link">{{ category }}</a>
+            {% else %}
+                <a href="pages/torch-parts" class="sidebar-menu__collection-link">{{ category }}</a>
+            {% endif %}
         </div>
         
         <div class="sidebar-menu__collections">
@@ -38,15 +41,11 @@
                 <div class="sidebar-menu__products">
                     {% assign sorted_products = collection.products | sort: 'metafields.custom.sort_order' %}
                     {% for product in sorted_products %}
-                       
-                        {% if product.metafields.custom.aftermarket== "false" %}
+                        {% unless product.metafields.custom.aftermarket %}
                             <a href="{{ product.url }}" class="sidebar-menu__product-link">
-                                {{ product.title }}{{ product.metafields.custom.sort_order }}
-                              </a>
-                            {% endif %}   
-                           
-                      
-                     
+                                {{ product.title }}
+                            </a>
+                         {%endunless%}   
                     {% endfor %}
                     {% assign has_aftermarket_products = false %}
                     {% for product in collection.products %}
@@ -63,7 +62,7 @@
                         {% for product in sorted_products %}
                           {% if product.metafields.custom.aftermarket %}
                             <a href="{{ product.url }}" class="sidebar-menu__product-link">
-                              {{ product.title }}{{ product.metafields.custom.sort_order }}
+                              {{ product.title }}
                             </a>
                           {% endif %}
                         {% endfor %}
