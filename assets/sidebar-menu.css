@@ -4,7 +4,7 @@
     border-right: 1px solid #e5e5e5;
     padding: 20px;
     height: 100vh;
-    position: fixed;
+    /* position: fixed; */
     left: 0;
     top: 0;
     overflow-y: auto;
@@ -73,29 +73,34 @@
 .sidebar-menu{
     background: #4c6251;
     padding: 2rem;
-  }
-  .sidebar-menu__title{
+}
+.sidebar-menu__title{
     color: #ffffff !important;
-  }
-  .sidebar-menu__category-link, 
-  .sidebar-menu__product-link{
+}
+.sidebar-menu__category-title{
+    color: #ffffff !important;
+
+}
+.sidebar-menu__category-link, 
+.sidebar-menu__product-link,
+.sidebar-menu__collection-link{
     color: #ffffff;
     text-decoration: none;
-  }
-  .sidebar-menu__products{
+}
+.sidebar-menu__products{
     padding-left : 1rem;
-  }
-  .sidebar-menu__category-link{
+}
+.sidebar-menu__category-link{
     font-size: 18px;
-  }
-  .sidebar-menu__product-link{
+}
+.sidebar-menu__product-link{
     display: block;
     font-size: 15px
-  }
-  .sidebar-menu__category-link:hover, 
-  .sidebar-menu__product-link:hover{
+}
+.sidebar-menu__category-link:hover, 
+.sidebar-menu__product-link:hover{
       text-decoration: underline;
-  }
+}
 
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
