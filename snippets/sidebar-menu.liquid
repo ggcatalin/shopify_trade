@@ -4,30 +4,82 @@
   </div>
 
   <nav class="sidebar-menu__nav">
+    {% assign categories = '' %}
+    
+    {% comment %}First, get all unique categories{% endcomment %}
     {% for collection in collections %}
-      {% if collection.products_count > 0 %}
-        <div class="sidebar-menu__category">
-          <div class="sidebar-menu__category-header">
-            <a href="{{ collection.url }}" class="sidebar-menu__category-link">
-              {{ collection.title }}
-            </a>
-          </div>
-          
-          <div class="sidebar-menu__products">
-            {% for product in collection.products limit: 5 %}
-              <a href="{{ product.url }}" class="sidebar-menu__product-link">
-                {{ product.title }}
-              </a>
-            {% endfor %}
-            
-            {% if collection.products_count > 5 %}
-              <a href="{{ collection.url }}" class="sidebar-menu__view-all">
-                View all {{ collection.products_count }} products
-              </a>
-            {% endif %}
-          </div>
-        </div>
+      
+      {% if  collection.metafields.custom.category != blank %}
+        {% assign categories = categories | append: collection.metafields.custom.category | append: ',' %}
       {% endif %}
+    {% endfor %}
+    {% assign unique_categories = categories | split: ',' | uniq | sort %}
+    
+    {% comment %}Loop through unique categories{% endcomment %}
+    {% for category in unique_categories %}
+       
+      <div class="sidebar-menu__category">
+        <div class="sidebar-menu__category-header">
+          <span class="sidebar-menu__category-title">{{ category }}</span>
+        </div>
+        
+        <div class="sidebar-menu__collections">
+          {% comment %}Get collections for this category{% endcomment %}
+          {% for collection in collections %}
+            {% if collection.metafields.custom.category == category %}
+              <div class="sidebar-menu__collection">
+                {% if category == "Machine Parts" %}
+                    <a href="{{ collection.url }}" class="sidebar-menu__collection-link">
+                    {{ collection.title }}
+                    </a>
+                 {%else%}   
+                    {{ collection.title }}
+                {% endif %}
+                <div class="sidebar-menu__products">
+                    {% assign sorted_products = collection.products | sort: 'metafields.custom.sort_order' %}
+                    {% for product in sorted_products %}
+                       
+                        {% if product.metafields.custom.aftermarket== "false" %}
+                            <a href="{{ product.url }}" class="sidebar-menu__product-link">
+                                {{ product.title }}{{ product.metafields.custom.sort_order }}
+                              </a>
+                            {% endif %}   
+                           
+                      
+                     
+                    {% endfor %}
+                    {% assign has_aftermarket_products = false %}
+                    {% for product in collection.products %}
+                      {% if product.metafields.custom.aftermarket %}
+                        {% assign has_aftermarket_products = true %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                    
+                    {% if has_aftermarket_products %}
+                      <div class="sidebar-menu__after-market-products">
+                        After Market
+                        {% assign sorted_products = collection.products | sort: 'metafields.custom.sort_order' %}
+                        {% for product in sorted_products %}
+                          {% if product.metafields.custom.aftermarket %}
+                            <a href="{{ product.url }}" class="sidebar-menu__product-link">
+                              {{ product.title }}{{ product.metafields.custom.sort_order }}
+                            </a>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  
+                  
+                   
+                    
+   
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
     {% endfor %}
   </nav>
 </div>
