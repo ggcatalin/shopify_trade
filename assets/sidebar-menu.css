@@ -105,7 +105,7 @@
     display: block;
     font-size: 15px
 }
-.sidebar-menu__collection-link,
+.sidebar-menu__collection-link:hover,
 .sidebar-menu__category-link:hover, 
 .sidebar-menu__product-link:hover,
 .sidebar-menu__product-link:hover{
