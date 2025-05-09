@@ -1,7 +1,28 @@
 {
   "article": [],
   "blog": [],
-  "collection": [],
+  "collection": [
+    {
+      "key": "category",
+      "namespace": "custom",
+      "name": "Category",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "second_image",
+      "namespace": "custom",
+      "name": "Second image",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    }
+  ],
   "company": [],
   "company_location": [],
   "location": [],
@@ -37,6 +58,36 @@
       "type": {
         "name": "single_line_text_field",
         "category": "TEXT"
+      }
+    },
+    {
+      "key": "aftermarket",
+      "namespace": "custom",
+      "name": "Aftermarket",
+      "description": "",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "number_in_machine",
+      "namespace": "custom",
+      "name": "Number in machine",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "sort_order",
+      "namespace": "custom",
+      "name": "Sort order",
+      "description": "",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
       }
     }
   ],
@@ -115,6 +166,46 @@
       "key": "empty",
       "namespace": "custom",
       "name": "empty",
+      "description": "",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "26_to_10_gauge_material",
+      "namespace": "custom",
+      "name": "26 to 10 gauge material",
+      "description": "",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "1_8_to_3_8_material",
+      "namespace": "custom",
+      "name": "1/8\" to 3/8\" material",
+      "description": "",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "thin_gauge_stainless_steel",
+      "namespace": "custom",
+      "name": "Thin Gauge Stainless Steel",
+      "description": "",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "insulation",
+      "namespace": "custom",
+      "name": "Insulation",
       "description": "",
       "type": {
         "name": "boolean",
