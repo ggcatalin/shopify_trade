@@ -81,75 +81,79 @@
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            <div class="torch-multicolumn-card content-container">
-              {%- if block.settings.image != blank -%}
-                {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
-                  {% assign spaced_image = true %}
-                {% endif %}
-                <div class="torch-multicolumn-card__image-wrapper torch-multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} torch-multicolumn-card-spacing{% endif %}">
-                  <div
-                    class="media media--transparent media--{{ section.settings.image_ratio }}"
-                    {% if section.settings.image_ratio == 'adapt' %}
-                      style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
-                    {% endif %}
-                  >
-                    {%- liquid
-                      assign number_of_columns = section.settings.columns_desktop
-                      assign number_of_columns_mobile = section.settings.columns_mobile
-                      assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
-                      assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
-                      assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
-                      if section.settings.image_width == 'half'
-                        assign image_width = 0.5
-                      elsif section.settings.image_width == 'third'
-                        assign image_width = 0.33
-                      else
-                        assign image_width = 1
-                      endif
-                    -%}
-                    {% capture sizes %}
-                      (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
-                      (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
-                      (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
-                      calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
-                    {% endcapture %}
-                    {{
-                      block.settings.image
-                      | image_url: width: 3200
-                      | image_tag:
-                        widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
-                        sizes: sizes,
-                        class: 'torch-multicolumn-card__image'
-                    }}
-                  </div>
-                </div>
-              {%- endif -%}
-              <div class="torch-multicolumn-card__info">
-                         
-          
-              {%- if block.settings.title != blank -%}
-                  <h3 class="inline-richtext">{{ block.settings.title }}</h3>
-                {%- endif -%}
-                {%- if block.settings.text != blank -%}
-                  <div class="rte">{{ block.settings.text }}</div>
-                {%- endif -%}
-                {%- if block.settings.link_label != blank -%}
-                  <a
-                    class="link animate-arrow"
-                    {% if block.settings.link == blank %}
-                      role="link" aria-disabled="true"
-                    {% else %}
-                      href="{{ block.settings.link }}"
-                    {% endif %}
-                  >
-                    {{- block.settings.link_label | escape -}}
-                    <span class="svg-wrapper"
-                      ><span class="icon-wrap">&nbsp;{{ 'icon-arrow.svg' | inline_asset_content }}</span></span
+            <div class="torch_topPart-alignment">
+              <div class="torch-multicolumn-card content-container">
+                {%- if block.settings.image != blank -%}
+                  {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
+                    {% assign spaced_image = true %}
+                  {% endif %}
+                  <div class="torch-multicolumn-card__image-wrapper torch-multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} torch-multicolumn-card-spacing{% endif %}">
+                    <div
+                      class="media media--transparent media--{{ section.settings.image_ratio }}"
+                      {% if section.settings.image_ratio == 'adapt' %}
+                        style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
+                      {% endif %}
                     >
-                  </a>
+                      {%- liquid
+                        assign number_of_columns = section.settings.columns_desktop
+                        assign number_of_columns_mobile = section.settings.columns_mobile
+                        assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                        assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                        assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                        if section.settings.image_width == 'half'
+                          assign image_width = 0.5
+                        elsif section.settings.image_width == 'third'
+                          assign image_width = 0.33
+                        else
+                          assign image_width = 1
+                        endif
+                      -%}
+                      {% capture sizes %}
+                        (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                        (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                        (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                        calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                      {% endcapture %}
+                      {{
+                        block.settings.image
+                        | image_url: width: 3200
+                        | image_tag:
+                          widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                          sizes: sizes,
+                          class: 'torch-multicolumn-card__image'
+                      }}
+                    </div>
+                  </div>
                 {%- endif -%}
+                <div class="torch-multicolumn-card__info">
+                          
+            
+                  {%- if block.settings.title != blank -%}
+                    <h3 class="inline-richtext">{{ block.settings.title }}</h3>
+                    {%- endif -%}
+                    {%- if block.settings.text != blank -%}
+                      <div class="rte">{{ block.settings.text }}</div>
+                    {%- endif -%}
+                    {%- if block.settings.link_label != blank -%}
+                    <a
+                      class="link animate-arrow"
+                      {% if block.settings.link == blank %}
+                        role="link" aria-disabled="true"
+                      {% else %}
+                        href="{{ block.settings.link }}"
+                      {% endif %}
+                    >
+                      {{- block.settings.link_label | escape -}}
+                      <span class="svg-wrapper"
+                        ><span class="icon-wrap">&nbsp;{{ 'icon-arrow.svg' | inline_asset_content }}</span></span
+                      >
+                    </a>
+                  {%- endif -%}
               </div>
+            </div>
             {% if blocks_with_content == 1 %}
+              <div class="torch_bottomPart-alignment">
+
                 <label for="kaliburn-products">Select a Kaliburn Product:</label>
                 <select id="kaliburn-products">
                   <option value="">-- Choose a product --</option>
@@ -170,15 +174,44 @@
                 type="button"
                 id="submitpagefilteredkalimbur"
                 name="submitpagefiltered"
-               
-              >Submit</button>
+                >Submit</button>
+              </div>
             {% endif %}
             {% if blocks_with_content == 2 %}
-              <label for="hypertherm-products">Select a Hypertherm Product:</label>
-              <select id="hypertherm-products">
+              <div class="torch_bottomPart-alignment">
+
+                <label for="hypertherm-products">Select a Hypertherm Product:</label>
+                <select id="hypertherm-products">
+                  <option value="">-- Choose a product --</option>
+                  {% for product in collections.all.products %}
+                    {% if product.metafields.custom.torchmanufacturer == "Hypertherm" %}
+                      <option 
+                        value="{{ product.url }}">
+                        {{ product.title }}
+                      </option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                <!-- The second select, initially hidden -->
+                <select id="material-select-hypertherm" style="display:none; margin-top:10px;">
+                  <option value="">-- Choose a material --</option>
+                </select>
+                <button style="display:none; margin-top:10px;"
+                type="button"
+                id="submitpagefilteredhypertherm"
+                name="submitpagefiltered"
+              
+                >Submit</button>
+              </div>
+          {% endif %}
+          {% if blocks_with_content == 3 %}
+            <div class="torch_bottomPart-alignment">
+
+              <label for="attc-products">Select a ATTC Product:</label>
+              <select id="attc-products">
                 <option value="">-- Choose a product --</option>
                 {% for product in collections.all.products %}
-                  {% if product.metafields.custom.torchmanufacturer == "Hypertherm" %}
+                  {% if product.metafields.custom.torchmanufacturer == "ATTC" %}
                     <option 
                       value="{{ product.url }}">
                       {{ product.title }}
@@ -187,39 +220,16 @@
                 {% endfor %}
               </select>
               <!-- The second select, initially hidden -->
-              <select id="material-select-hypertherm" style="display:none; margin-top:10px;">
+              <select id="material-select-attc" style="display:none; margin-top:10px;">
                 <option value="">-- Choose a material --</option>
               </select>
               <button style="display:none; margin-top:10px;"
               type="button"
-              id="submitpagefilteredhypertherm"
+              id="submitpagefilteredattc"
               name="submitpagefiltered"
-             
-            >Submit</button>
-          {% endif %}
-          {% if blocks_with_content == 3 %}
-            <label for="attc-products">Select a ATTC Product:</label>
-            <select id="attc-products">
-              <option value="">-- Choose a product --</option>
-              {% for product in collections.all.products %}
-                {% if product.metafields.custom.torchmanufacturer == "ATTC" %}
-                  <option 
-                    value="{{ product.url }}">
-                    {{ product.title }}
-                  </option>
-                {% endif %}
-              {% endfor %}
-            </select>
-            <!-- The second select, initially hidden -->
-            <select id="material-select-attc" style="display:none; margin-top:10px;">
-              <option value="">-- Choose a material --</option>
-            </select>
-            <button style="display:none; margin-top:10px;"
-            type="button"
-            id="submitpagefilteredattc"
-            name="submitpagefiltered"
-           
-          >Submit</button>
+            
+              >Submit</button>
+            </div>
         {% endif %}
         
             </div>
