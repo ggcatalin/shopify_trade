@@ -94,19 +94,12 @@
           "settings": {
             "collection": "hpr"
           }
-        },
-        "featured_collection_z4j4gx": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "powermax"
-          }
         }
       },
       "block_order": [
         "featured_collection_bbyGVV",
         "featured_collection_yAPADd",
-        "featured_collection_WdFDqW",
-        "featured_collection_z4j4gx"
+        "featured_collection_WdFDqW"
       ],
       "settings": {
         "title": "Torch Parts",
