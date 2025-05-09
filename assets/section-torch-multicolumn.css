@@ -187,7 +187,8 @@
 }
 
 .torch-multicolumn-card__info {
-    padding: 2.5rem;
+    padding: 0.5rem 2.5rem 2.5rem 2.5rem;
+    text-align: center;
 }
 
 .background-none .torch-multicolumn-card__info {
@@ -243,6 +244,9 @@
 .torch-multicolumn-card {
     position: relative;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .torch-multicolumn-card>.torch-multicolumn-card__image-wrapper--full-width:not(.torch-multicolumn-card-spacing) {
