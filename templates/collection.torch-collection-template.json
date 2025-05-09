@@ -52,9 +52,9 @@
       "settings": {
         "image": "{{ collection.image }}",
         "height": "adapt",
-        "desktop_image_width": "large",
+        "desktop_image_width": "small",
         "layout": "text_first",
-        "image_behavior": "none",
+        "image_behavior": "zoom-in",
         "content_layout": "no-overlap",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
