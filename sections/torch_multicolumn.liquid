@@ -80,7 +80,7 @@
               data-cascade
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
-          >
+            >
             <div class="torch_topPart-alignment">
               <div class="torch-multicolumn-card content-container">
                 {%- if block.settings.image != blank -%}
@@ -93,7 +93,7 @@
                       {% if section.settings.image_ratio == 'adapt' %}
                         style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
                       {% endif %}
-                    >
+                      >
                       {%- liquid
                         assign number_of_columns = section.settings.columns_desktop
                         assign number_of_columns_mobile = section.settings.columns_mobile
@@ -149,89 +149,67 @@
                       >
                     </a>
                   {%- endif -%}
-              </div>
+                </div>
             </div>
-            {% if blocks_with_content == 1 %}
-              <div class="torch_bottomPart-alignment">
-
-                <label for="kaliburn-products">Select a Kaliburn Product:</label>
-                <select id="kaliburn-products">
-                  <option value="">-- Choose a product --</option>
-                  {% for product in collections.all.products %}
-                    {% if product.metafields.custom.torchmanufacturer == "Kaliburn" %}
-                      <option 
-                        value="{{ product.url }}">
-                        {{ product.title }}
-                      </option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-                <!-- The second select, initially hidden -->
-                <select id="material-select" style="display:none; margin-top:10px;">
-                  <option value="">-- Choose a material --</option>
-                </select>
-                <button style="display:none; margin-top:10px;"
-                type="button"
-                id="submitpagefilteredkalimbur"
-                name="submitpagefiltered"
-                >Submit</button>
-              </div>
-            {% endif %}
-            {% if blocks_with_content == 2 %}
-              <div class="torch_bottomPart-alignment">
-
-                <label for="hypertherm-products">Select a Hypertherm Product:</label>
-                <select id="hypertherm-products">
-                  <option value="">-- Choose a product --</option>
-                  {% for product in collections.all.products %}
-                    {% if product.metafields.custom.torchmanufacturer == "Hypertherm" %}
-                      <option 
-                        value="{{ product.url }}">
-                        {{ product.title }}
-                      </option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-                <!-- The second select, initially hidden -->
-                <select id="material-select-hypertherm" style="display:none; margin-top:10px;">
-                  <option value="">-- Choose a material --</option>
-                </select>
-                <button style="display:none; margin-top:10px;"
-                type="button"
-                id="submitpagefilteredhypertherm"
-                name="submitpagefiltered"
-              
-                >Submit</button>
-              </div>
-          {% endif %}
-          {% if blocks_with_content == 3 %}
-            <div class="torch_bottomPart-alignment">
-
-              <label for="attc-products">Select a ATTC Product:</label>
-              <select id="attc-products">
-                <option value="">-- Choose a product --</option>
-                {% for product in collections.all.products %}
-                  {% if product.metafields.custom.torchmanufacturer == "ATTC" %}
-                    <option 
-                      value="{{ product.url }}">
-                      {{ product.title }}
-                    </option>
+                <div class="torch_bottomPart-alignment">
+                  {% if blocks_with_content == 1 %}
+                      <label for="kaliburn-products">Select a Kaliburn Product:</label>
+                      <select id="kaliburn-products">
+                        <option value="">-- Choose a product --</option>
+                        {% for product in collections.all.products %}
+                          {% if product.metafields.custom.torchmanufacturer == "Kaliburn" %}
+                            <option 
+                              value="{{ product.url }}">
+                              {{ product.title }}
+                            </option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                      <!-- The second select, initially hidden -->
+                      <select id="material-select" style="display:none; margin-top:10px;">
+                        <option value="">-- Choose a material --</option>
+                      </select>
+                      <button style="display:none; margin-top:10px;" type="button" id="submitpagefilteredkalimbur" name="submitpagefiltered">Submit</button>
                   {% endif %}
-                {% endfor %}
-              </select>
-              <!-- The second select, initially hidden -->
-              <select id="material-select-attc" style="display:none; margin-top:10px;">
-                <option value="">-- Choose a material --</option>
-              </select>
-              <button style="display:none; margin-top:10px;"
-              type="button"
-              id="submitpagefilteredattc"
-              name="submitpagefiltered"
-            
-              >Submit</button>
-            </div>
-        {% endif %}
-        
+                  {% if blocks_with_content == 2 %}
+                    <label for="hypertherm-products">Select a Hypertherm Product:</label>
+                    <select id="hypertherm-products">
+                      <option value="">-- Choose a product --</option>
+                      {% for product in collections.all.products %}
+                        {% if product.metafields.custom.torchmanufacturer == "Hypertherm" %}
+                          <option 
+                            value="{{ product.url }}">
+                            {{ product.title }}
+                          </option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                    <!-- The second select, initially hidden -->
+                    <select id="material-select-hypertherm" style="display:none; margin-top:10px;">
+                      <option value="">-- Choose a material --</option>
+                    </select>
+                    <button style="display:none; margin-top:10px;" type="button" id="submitpagefilteredhypertherm" name="submitpagefiltered">Submit</button>
+                  {% endif %}
+                  {% if blocks_with_content == 3 %}
+                    <label for="attc-products">Select a ATTC Product:</label>
+                    <select id="attc-products">
+                      <option value="">-- Choose a product --</option>
+                      {% for product in collections.all.products %}
+                        {% if product.metafields.custom.torchmanufacturer == "ATTC" %}
+                          <option 
+                            value="{{ product.url }}">
+                            {{ product.title }}
+                          </option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                    <!-- The second select, initially hidden -->
+                    <select id="material-select-attc" style="display:none; margin-top:10px;">
+                      <option value="">-- Choose a material --</option>
+                    </select>
+                    <button style="display:none; margin-top:10px;" type="button" id="submitpagefilteredattc" name="submitpagefiltered">Submit</button>
+                  {% endif %}
+                </div>
             </div>
           </li>
         {%- endfor -%}
