@@ -25,7 +25,7 @@
           "settings": {
             "image": "shopify://shop_images/kaliburn-logo_new_f2706046-689b-414a-87ec-4731a83630ea.png",
             "title": "",
-            "text": "<p>Formerly Innerlogic</p>",
+            "text": "<p><em>Formerly Innerlogic</em></p>",
             "link_label": "",
             "link": ""
           }
@@ -45,7 +45,7 @@
           "settings": {
             "image": "shopify://shop_images/american-torch-tip_newx.png",
             "title": "",
-            "text": "<p><em>Aftermarket Kaliburn consumables</em><br/></p>",
+            "text": "<p><em>Aftermarket Kaliburn consumables</em></p>",
             "link_label": "",
             "link": ""
           }
