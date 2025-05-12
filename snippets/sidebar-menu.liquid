@@ -79,3 +79,40 @@
     {% endfor %}
   </nav>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Toggle category collections
+  document.querySelectorAll(".sidebar-menu__category-header a").forEach((categoryLink) => {
+    categoryLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      const category = this.closest(".sidebar-menu__category");
+      const collections = category.querySelector(".sidebar-menu__collections");
+      collections.classList.toggle("active");
+    });
+  });
+
+  // Toggle collection products
+  document.querySelectorAll(".sidebar-menu__collection-link").forEach((collectionLink) => {
+    collectionLink.addEventListener("click", function (e) {
+      const collection = this.closest(".sidebar-menu__collection");
+      const products = collection.querySelector(".sidebar-menu__products");
+
+      if (products && products.children.length > 0) {
+        e.preventDefault(); // prevent navigation if there are products to toggle
+        products.classList.toggle("active");
+      }
+    });
+  });
+
+  // Toggle aftermarket products if needed
+  document.querySelectorAll(".sidebar-menu__after-market-products").forEach((afterMarket) => {
+    const toggleBtn = document.createElement("button");
+    toggleBtn.textContent = "Toggle Aftermarket";
+    toggleBtn.classList.add("aftermarket-toggle");
+    toggleBtn.addEventListener("click", () => {
+      afterMarket.classList.toggle("active");
+    });
+    afterMarket.parentElement.insertBefore(toggleBtn, afterMarket);
+  });
+});
+</script>
