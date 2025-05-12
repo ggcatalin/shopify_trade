@@ -95,8 +95,8 @@
 </div>
 {% style %}
   .sidebar-menu__collections,
-.sidebar-menu__products,
-.sidebar-menu__after-market-products {
+.sidebar-menu__products
+{
   display: none;
 }
 
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     parent.insertBefore(toggleBtn, afterMarket);
   }); */
-  document.querySelectorAll(".sidebar-menu__products a.active, .sidebar-menu__products.active").forEach((productList) => {
+  document.querySelectorAll(".sidebar-menu__products a.active, .sidebar-menu__products.active, .sidebar-menu__category-header a.active").forEach((productList) => {
     const collection = productList.closest(".sidebar-menu__collection");
     const products = productList.closest(".sidebar-menu__products");
     if(products){
