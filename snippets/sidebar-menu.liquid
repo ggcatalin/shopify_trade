@@ -28,21 +28,31 @@
         
         <div class="sidebar-menu__collections" >
           {% comment %}Get collections for this category{% endcomment %}
+          
           {% assign sorted_collections = collections | sort: 'metafields.custom.category_order' %}
           {% for collection in sorted_collections %}
             {% if collection.metafields.custom.category == category %}
 
               <div class="sidebar-menu__collection" style="order: {{ collection.metafields.custom.category_order | default: 99 }};">
                 {% if category == "Machine Parts" %}
-                    <a href="{{ collection.url }}" class="sidebar-menu__collection-link">
+                    <a href="{{ collection.url }}" class="sidebar-menu__collection-link ">
+                      {{ collection.title }}
                     {{ collection.title }}
                     </a>
                  {%else%}   
                     <span class="sidebar-menu__collection-title">{{ collection.title }}</span>
                 {% endif %}
-                <div class="sidebar-menu__products" >
-                    {% assign sorted_products = collection.products | sort: 'metafields.custom.sort_order' %}
-                    {% for product in sorted_products %}
+                {% assign parts = request.path | split: '/' %}
+                {% assign urlpart = product.url | split: '/' %}
+                {% assign selected = "xx" %}
+                {% for product in collection.products %}
+                  {% if parts.last == urlpart.last %}
+                    {% assign selected = "active" %}
+                  {% endif %}
+                {% endfor %}
+
+                <div class="sidebar-menu__products {{ selected }}" >
+                    {% for product in collection.products %}
                         {% unless product.metafields.custom.aftermarket %}
                             <a href="{{ product.url }}" class="sidebar-menu__product-link" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
                               {{ product.title }}
@@ -60,8 +70,7 @@
                     {% if has_aftermarket_products %}
                       <div class="sidebar-menu__after-market-products" style="order: 100">
                         After Market
-                        {% assign sorted_products = collection.products | sort: 'metafields.custom.sort_order' %}
-                        {% for product in sorted_products %}
+                        {% for product in collection.products %}
                           {% if product.metafields.custom.aftermarket %}
                             <a href="{{ product.url }}" class="sidebar-menu__product-link" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
                               {{ product.title }}
@@ -88,10 +97,8 @@
 
 .sidebar-menu__collections.active,
 .sidebar-menu__products.active,
-.sidebar-menu__after-market-products.active, 
-.sidebar-menu__collections,
-.sidebar-menu__products,
-.sidebar-menu__after-market-products {
+.sidebar-menu__after-market-products.active
+ {
   display: flex;
   flex-direction: column;
 }
@@ -145,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Optional: Aftermarket toggle (does not auto-close others)
-  document.querySelectorAll(".sidebar-menu__after-market-products").forEach((afterMarket) => {
+ /*  document.querySelectorAll(".sidebar-menu__after-market-products").forEach((afterMarket) => {
     const parent = afterMarket.parentElement;
     const toggleBtn = document.createElement("button");
     toggleBtn.textContent = "Toggle Aftermarket";
@@ -154,6 +161,20 @@ document.addEventListener("DOMContentLoaded", function () {
       afterMarket.classList.toggle("active");
     });
     parent.insertBefore(toggleBtn, afterMarket);
+  }); */
+  document.querySelectorAll(".sidebar-menu__products.active").forEach((productList) => {
+    const collection = productList.closest(".sidebar-menu__collection");
+    setTimeout(() => {
+      console.log(collection);  
+    }, 3000);
+    
+    if (collection) {
+      collection.classList.add("active");
+      const collectionList = collection.parentElement; // .sidebar-menu__collections
+      if (collectionList && collectionList.classList.contains("sidebar-menu__collections")) {
+        collectionList.classList.add("active");
+      }
+    }
   });
 });
 </script>
