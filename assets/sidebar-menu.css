@@ -121,7 +121,8 @@
 .sidebar-menu__category-link{
     font-size: 18px;
 }
-.sidebar-menu__product-link{
+.sidebar-menu__product-link,
+.sidebar-menu__collection-link{
     display: block;
     font-size: 15px
 }
