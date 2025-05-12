@@ -112,7 +112,9 @@
     color: #fff;;
     text-decoration: underline;
 }
-
+.sidebar-menu__after-market-products{
+    padding-left: 1rem;
+}
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
     .sidebar-menu {
