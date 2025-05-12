@@ -74,7 +74,7 @@
                     
                     {% if has_aftermarket_products %}
                       <div class="sidebar-menu__after-market-products" style="order: 100">
-                        After Market
+                        <span>After Market</span>
                         {% for product in collection.products %}
                           {% if product.metafields.custom.aftermarket %}
                             <a href="{{ product.url }}" class="sidebar-menu__product-link" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
