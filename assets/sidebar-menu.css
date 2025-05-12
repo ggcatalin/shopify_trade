@@ -47,7 +47,7 @@
 .sidebar-menu__products {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0px;
     padding-left: 15px;
 }
 
@@ -82,6 +82,12 @@
 .sidebar-menu__after-market-products{
     color: #ffffff !important;
 
+}
+.sidebar-menu__after-market-products{
+    font-weight: bold;
+}
+.sidebar-menu__product-link{
+    font-weight: normal;
 }
 .sidebar-menu__category-link, 
 .sidebar-menu__product-link,
