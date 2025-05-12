@@ -79,78 +79,40 @@
     {% endfor %}
   </nav>
 </div>
-{% style %}
-  .sidebar-menu__collections,
-.sidebar-menu__products,
-.sidebar-menu__after-market-products {
-  display: none;
-}
-
-.sidebar-menu__collections.active,
-.sidebar-menu__products.active,
-.sidebar-menu__after-market-products.active {
-  display: flex;
-  flex-direction: column;
-}
-{% endstyle %}
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  // Accordion for category collections
+  // Toggle category collections
   document.querySelectorAll(".sidebar-menu__category-header a").forEach((categoryLink) => {
     categoryLink.addEventListener("click", function (e) {
       e.preventDefault();
-
-      const header = this.closest(".sidebar-menu__category-header");
-      if (!header) return;
-
-      const category = header.closest(".sidebar-menu__category");
-      if (!category) return;
-
+      const category = this.closest(".sidebar-menu__category");
       const collections = category.querySelector(".sidebar-menu__collections");
-      if (!collections) return;
-
-      // Close all other active collections
-      document.querySelectorAll(".sidebar-menu__collections.active").forEach((el) => {
-        if (el !== collections) el.classList.remove("active");
-      });
-
-      // Toggle current
       collections.classList.toggle("active");
     });
   });
 
-  // Accordion for collection products
+  // Toggle collection products
   document.querySelectorAll(".sidebar-menu__collection-link").forEach((collectionLink) => {
     collectionLink.addEventListener("click", function (e) {
       const collection = this.closest(".sidebar-menu__collection");
-      if (!collection) return;
-
       const products = collection.querySelector(".sidebar-menu__products");
-      if (!products || products.children.length === 0) return;
 
-      e.preventDefault(); // Only toggle if there are products
-
-      // Close all other active product lists in the same category
-      const allProducts = collection.parentElement.querySelectorAll(".sidebar-menu__products.active");
-      allProducts.forEach((el) => {
-        if (el !== products) el.classList.remove("active");
-      });
-
-      // Toggle current
-      products.classList.toggle("active");
+      if (products && products.children.length > 0) {
+        e.preventDefault(); // prevent navigation if there are products to toggle
+        products.classList.toggle("active");
+      }
     });
   });
 
-  // Optional: Aftermarket toggle (does not auto-close others)
+  // Toggle aftermarket products if needed
   document.querySelectorAll(".sidebar-menu__after-market-products").forEach((afterMarket) => {
-    const parent = afterMarket.parentElement;
     const toggleBtn = document.createElement("button");
     toggleBtn.textContent = "Toggle Aftermarket";
     toggleBtn.classList.add("aftermarket-toggle");
     toggleBtn.addEventListener("click", () => {
       afterMarket.classList.toggle("active");
     });
-    parent.insertBefore(toggleBtn, afterMarket);
+    afterMarket.parentElement.insertBefore(toggleBtn, afterMarket);
   });
 });
 </script>
