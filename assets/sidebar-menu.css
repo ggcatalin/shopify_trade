@@ -168,7 +168,9 @@
 .collection-list-wrapper .card-wrapper{
     height: auto !important;
 }
-
+.collection-list-wrapper .card-wrapper .card--media{
+    padding-top: 20px;;
+}
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
     .sidebar-menu {
