@@ -31,30 +31,35 @@
           
           {% assign sorted_collections = collections | sort: 'metafields.custom.category_order' %}
           {% for collection in sorted_collections %}
+            {% assign selected = "" %}
+            {% assign urlpart = collection.url | split: '/' %}
+            {% if parts.last == urlpart.last %}
+              {% assign selected = "active" %}
+            {% endif %}
             {% if collection.metafields.custom.category == category %}
 
               <div class="sidebar-menu__collection" style="order: {{ collection.metafields.custom.category_order | default: 99 }};">
-                {% if category == "Machine Parts" %}
+                {% if true or category == "Machine Parts" %}
                     <a href="{{ collection.url }}" class="sidebar-menu__collection-link ">
                       {{ collection.title }}
-                    {{ collection.title }}
                     </a>
                  {%else%}   
                     <span class="sidebar-menu__collection-title">{{ collection.title }}</span>
                 {% endif %}
                 {% assign parts = request.path | split: '/' %}
-                {% assign urlpart = product.url | split: '/' %}
-                {% assign selected = "xx" %}
-                {% for product in collection.products %}
-                  {% if parts.last == urlpart.last %}
-                    {% assign selected = "active" %}
-                  {% endif %}
-                {% endfor %}
+                
+                
 
-                <div class="sidebar-menu__products {{ selected }}" >
+                <div class="sidebar-menu__products {{selected}}" >
+
+                {% assign selected = "" %}
                     {% for product in collection.products %}
+                      {% assign urlpart = product.url | split: '/' %}
+                      {% if parts.last == urlpart.last %}
+                        {% assign selected = "active" %}
+                      {% endif %}
                         {% unless product.metafields.custom.aftermarket %}
-                            <a href="{{ product.url }}" class="sidebar-menu__product-link" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
+                            <a href="{{ product.url }}" class="sidebar-menu__product-link {{ selected }}" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
                               {{ product.title }}
                             </a>
                          {%endunless%}   
@@ -126,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Toggle current
       collections.classList.toggle("active");
+      this.classList.toggle("active");
     });
   });
 
@@ -148,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Toggle current
       products.classList.toggle("active");
+      this.classList.toggle("active");
     });
   });
 
@@ -162,19 +169,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     parent.insertBefore(toggleBtn, afterMarket);
   }); */
-  document.querySelectorAll(".sidebar-menu__products.active").forEach((productList) => {
+  document.querySelectorAll(".sidebar-menu__products a.active, .sidebar-menu__products.active").forEach((productList) => {
     const collection = productList.closest(".sidebar-menu__collection");
-    setTimeout(() => {
-      console.log(collection);  
-    }, 3000);
-    
+    const products = productList.closest(".sidebar-menu__products");
+    if(products){
+      products.classList.add("active");
+      //products.querySelector('a').classList.add("active");
+    }
     if (collection) {
       collection.classList.add("active");
+      collection.querySelector('a').classList.add("active");
+      
       const collectionList = collection.parentElement; // .sidebar-menu__collections
       if (collectionList && collectionList.classList.contains("sidebar-menu__collections")) {
-        collectionList.classList.add("active");
+        collectionList.classList.add("active");        
+        collectionList.previousElementSibling.querySelector('a').classList.add("active");
+        
       }
     }
+   
   });
 });
 </script>
