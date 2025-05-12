@@ -81,10 +81,24 @@
 .sidebar-menu__collection-title,
 .sidebar-menu__after-market-products{
     color: #ffffff !important;
-
 }
+
 .sidebar-menu__after-market-products{
     font-weight: bold;
+    position: relative;
+}
+.sidebar-menu__after-market-products:after{
+    content: "";
+    font-size: 18px;
+    color: #fff;
+    transform: rotate(-45deg);
+    position: absolute;
+    right: 0;
+    top: 9px;
+    width: 8px;
+    height: 8px;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
 }
 .sidebar-menu__product-link{
     font-weight: normal;
