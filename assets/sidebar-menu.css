@@ -108,13 +108,35 @@
 .sidebar-menu__collection-link:hover,
 .sidebar-menu__category-link:hover, 
 .sidebar-menu__product-link:hover,
-.sidebar-menu__product-link:hover{
+.sidebar-menu__product-link:hover,
+.sidebar-menu__collection-link.active,
+.sidebar-menu__category-link.active, 
+.sidebar-menu__product-link.active,
+.sidebar-menu__product-link.active{
     color: #fff;;
     text-decoration: underline;
+}
+.sidebar-menu__collection-link:after{
+    content: '>';
+    font-size: 18px;
+    color: #fff;
+    transform: rotate(-270deg);
+}
+.sidebar-menu__collection{
+    display: block;
+    position: relative;
+}
+.sidebar-menu__category-header,
+.sidebar-menu__collections{
+    position: relative;
 }
 .sidebar-menu__after-market-products{
     padding-left: 1rem;
 }
+.sidebar-menu__toggle{
+    display: none;
+}
+
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
     .sidebar-menu {
