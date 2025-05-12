@@ -166,7 +166,7 @@
 }
 
 .collection-list-wrapper .card-wrapper{
-    height: auto !important;
+    /* height: auto !important; */
 }
 .collection-list-wrapper .card-wrapper .card--media{
     padding-top: 20px;;
