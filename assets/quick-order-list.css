@@ -534,8 +534,13 @@ quick-order-list .pagination-wrapper {
   .quick-order-list-total__confirmation span {
     margin-right: 3rem;
   }
-
   .quick-order-list__total-items {
+    width: calc(((11rem / var(--font-body-scale) + var(--inputs-border-width) * 2)));
+    margin-left: calc(15px + 3.4rem);
+    flex-direction: column;
+    margin-left: 54.6%;
+  }
+  .torch-quick-order-list-container .quick-order-list__total-items {
     width: calc(((11rem / var(--font-body-scale) + var(--inputs-border-width) * 2)));
     margin-left: calc(15px + 3.4rem);
     flex-direction: column;

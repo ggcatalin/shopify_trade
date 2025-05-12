@@ -355,7 +355,11 @@
   right: calc(var(--border-width) * -1);
   top: calc(var(--border-width) * -1);
 }
-
+.collection-list__item .card__content{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
 .card__heading a::after {
   bottom: 0;
   content: '';

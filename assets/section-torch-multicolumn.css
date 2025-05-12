@@ -58,6 +58,7 @@
 }
 .torch-multicolumn-card label{
     padding: 1rem 2.5rem;
+    display: block;
 }
 .torch-multicolumn-card button{
     margin: 20px auto 0px auto;
@@ -269,7 +270,14 @@
     margin-left: 0.8rem;
     white-space: nowrap;
 }
-
+@media (max-width: 1199px){
+    .torch-multicolumn-card select {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: calc(100% - 5rem);
+    }
+}
 @media screen and (min-width: 990px) {
     .torch-multicolumn-list__item--empty {
         display: list-item;
