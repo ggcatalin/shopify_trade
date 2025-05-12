@@ -26,11 +26,13 @@
             {% endif %}
         </div>
         
-        <div class="sidebar-menu__collections">
+        <div class="sidebar-menu__collections" style="display: flex; flex-direction: column">
           {% comment %}Get collections for this category{% endcomment %}
-          {% for collection in collections %}
+          {% assign sorted_collections = collections | sort: 'metafields.custom.category_order' %}
+          {% for collection in sorted_collections %}
             {% if collection.metafields.custom.category == category %}
-              <div class="sidebar-menu__collection">
+
+              <div class="sidebar-menu__collection" style="order: {{ collection.metafields.custom.category_order | default: 99 }};">
                 {% if category == "Machine Parts" %}
                     <a href="{{ collection.url }}" class="sidebar-menu__collection-link">
                     {{ collection.title }}
@@ -38,12 +40,12 @@
                  {%else%}   
                     <span class="sidebar-menu__collection-title">{{ collection.title }}</span>
                 {% endif %}
-                <div class="sidebar-menu__products">
+                <div class="sidebar-menu__products" style="display: flex; flex-direction: column">
                     {% assign sorted_products = collection.products | sort: 'metafields.custom.sort_order' %}
                     {% for product in sorted_products %}
                         {% unless product.metafields.custom.aftermarket %}
-                            <a href="{{ product.url }}" class="sidebar-menu__product-link">
-                                {{ product.title }}
+                            <a href="{{ product.url }}" class="sidebar-menu__product-link" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
+                              {{ product.title }}
                             </a>
                          {%endunless%}   
                     {% endfor %}
@@ -56,23 +58,18 @@
                     {% endfor %}
                     
                     {% if has_aftermarket_products %}
-                      <div class="sidebar-menu__after-market-products">
+                      <div class="sidebar-menu__after-market-products" style="order: 100">
                         After Market
                         {% assign sorted_products = collection.products | sort: 'metafields.custom.sort_order' %}
                         {% for product in sorted_products %}
                           {% if product.metafields.custom.aftermarket %}
-                            <a href="{{ product.url }}" class="sidebar-menu__product-link">
+                            <a href="{{ product.url }}" class="sidebar-menu__product-link" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
                               {{ product.title }}
                             </a>
                           {% endif %}
                         {% endfor %}
                       </div>
                     {% endif %}
-                  
-                  
-                   
-                    
-   
                 </div>
               </div>
             {% endif %}

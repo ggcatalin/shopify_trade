@@ -21,6 +21,16 @@
         "name": "file_reference",
         "category": "REFERENCE"
       }
+    },
+    {
+      "key": "category_order",
+      "namespace": "custom",
+      "name": "Category order",
+      "description": "",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
     }
   ],
   "company": [],
