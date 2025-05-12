@@ -52,8 +52,9 @@
 
                 <div class="sidebar-menu__products {{selected}}" >
 
-                {% assign selected = "" %}
+                
                     {% for product in collection.products %}
+                      {% assign selected = "" %}
                       {% assign urlpart = product.url | split: '/' %}
                       {% if parts.last == urlpart.last %}
                         {% assign selected = "active" %}
