@@ -26,7 +26,7 @@
             {% endif %}
         </div>
         
-        <div class="sidebar-menu__collections" style="display: flex; flex-direction: column">
+        <div class="sidebar-menu__collections" >
           {% comment %}Get collections for this category{% endcomment %}
           {% assign sorted_collections = collections | sort: 'metafields.custom.category_order' %}
           {% for collection in sorted_collections %}
@@ -40,7 +40,7 @@
                  {%else%}   
                     <span class="sidebar-menu__collection-title">{{ collection.title }}</span>
                 {% endif %}
-                <div class="sidebar-menu__products" style="display: flex; flex-direction: column">
+                <div class="sidebar-menu__products" >
                     {% assign sorted_products = collection.products | sort: 'metafields.custom.sort_order' %}
                     {% for product in sorted_products %}
                         {% unless product.metafields.custom.aftermarket %}
@@ -79,40 +79,81 @@
     {% endfor %}
   </nav>
 </div>
+{% style %}
+  .sidebar-menu__collections,
+.sidebar-menu__products,
+.sidebar-menu__after-market-products {
+  display: none;
+}
+
+.sidebar-menu__collections.active,
+.sidebar-menu__products.active,
+.sidebar-menu__after-market-products.active, 
+.sidebar-menu__collections,
+.sidebar-menu__products,
+.sidebar-menu__after-market-products {
+  display: flex;
+  flex-direction: column;
+}
+{% endstyle %}
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  // Toggle category collections
+  // Accordion for category collections
   document.querySelectorAll(".sidebar-menu__category-header a").forEach((categoryLink) => {
     categoryLink.addEventListener("click", function (e) {
       e.preventDefault();
-      const category = this.closest(".sidebar-menu__category");
+
+      const header = this.closest(".sidebar-menu__category-header");
+      if (!header) return;
+
+      const category = header.closest(".sidebar-menu__category");
+      if (!category) return;
+
       const collections = category.querySelector(".sidebar-menu__collections");
+      if (!collections) return;
+
+      // Close all other active collections
+      document.querySelectorAll(".sidebar-menu__collections.active").forEach((el) => {
+        if (el !== collections) el.classList.remove("active");
+      });
+
+      // Toggle current
       collections.classList.toggle("active");
     });
   });
 
-  // Toggle collection products
+  // Accordion for collection products
   document.querySelectorAll(".sidebar-menu__collection-link").forEach((collectionLink) => {
     collectionLink.addEventListener("click", function (e) {
       const collection = this.closest(".sidebar-menu__collection");
-      const products = collection.querySelector(".sidebar-menu__products");
+      if (!collection) return;
 
-      if (products && products.children.length > 0) {
-        e.preventDefault(); // prevent navigation if there are products to toggle
-        products.classList.toggle("active");
-      }
+      const products = collection.querySelector(".sidebar-menu__products");
+      if (!products || products.children.length === 0) return;
+
+      e.preventDefault(); // Only toggle if there are products
+
+      // Close all other active product lists in the same category
+      const allProducts = collection.parentElement.querySelectorAll(".sidebar-menu__products.active");
+      allProducts.forEach((el) => {
+        if (el !== products) el.classList.remove("active");
+      });
+
+      // Toggle current
+      products.classList.toggle("active");
     });
   });
 
-  // Toggle aftermarket products if needed
+  // Optional: Aftermarket toggle (does not auto-close others)
   document.querySelectorAll(".sidebar-menu__after-market-products").forEach((afterMarket) => {
+    const parent = afterMarket.parentElement;
     const toggleBtn = document.createElement("button");
     toggleBtn.textContent = "Toggle Aftermarket";
     toggleBtn.classList.add("aftermarket-toggle");
     toggleBtn.addEventListener("click", () => {
       afterMarket.classList.toggle("active");
     });
-    afterMarket.parentElement.insertBefore(toggleBtn, afterMarket);
+    parent.insertBefore(toggleBtn, afterMarket);
   });
 });
 </script>
