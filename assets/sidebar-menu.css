@@ -1,5 +1,6 @@
 .sidebar-menu {
     width: 280px;
+    min-width: 240px;
     background: #fff;
     border-right: 1px solid #e5e5e5;
     padding: 20px;
@@ -171,6 +172,13 @@
 .collection-list-wrapper .card-wrapper .card--media{
     padding-top: 20px;;
 }
+.sidebar_menu_mobile_toggler{
+    display: none;
+}
+
+.sidebar-menu__close{
+    display: none;
+}
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
     .sidebar-menu {
@@ -179,5 +187,54 @@
         position: relative;
         border-right: none;
         border-bottom: 1px solid #e5e5e5;
+    }
+}
+@media screen and (max-width: 940px) {
+    .sidebar-menu__collections,
+    .sidebar-menu__products {
+        display: none;
+    }
+
+    .sidebar-menu__collections.active,
+    .sidebar-menu__products.active,
+    .sidebar-menu__after-market-products.active {
+    display: flex;
+    flex-direction: column;
+    }
+
+    .sidebar-menu__close {
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        z-index: 1001;
+        color: #fff;
+        display: block;
+    }
+
+    .sidebar-menu {
+    
+        display: none;
+    
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 1002;
+        top: 122px;
+        padding-top: 60px;
+    }
+    .sidebar_menu_mobile_toggler{
+        display: block;
+        background: #4c6251;
+        color: #ffffff;
+        pointer-events: all;
+        cursor: pointer;
+        padding: 5px 20px;
+        position: absolute;
+        z-index: 124;
+        right: 0;
+        top: 133px;;
     }
 }

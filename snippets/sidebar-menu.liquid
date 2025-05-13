@@ -1,90 +1,82 @@
-<div class="sidebar-menu">
+<div class="sidebar_menu_mobile_toggler sidebar-menu__title" id="sidebarOpenBtn">Categories</div>
+
+<div class="sidebar-menu" id="sidebarMenu">
   <div class="sidebar-menu__header">
     <h2 class="sidebar-menu__title">Categories</h2>
+    <div class="sidebar-menu__close" id="sidebarCloseBtn" aria-label="Close Menu">&times;</div>
   </div>
 
   <nav class="sidebar-menu__nav">
     {% assign categories = '' %}
-    
+
     {% comment %}First, get all unique categories{% endcomment %}
     {% for collection in collections %}
-      
-      {% if  collection.metafields.custom.category != blank %}
+      {% if collection.metafields.custom.category != blank %}
         {% assign categories = categories | append: collection.metafields.custom.category | append: ',' %}
       {% endif %}
     {% endfor %}
     {% assign unique_categories = categories | split: ',' | uniq | sort %}
-    
+
     {% comment %}Loop through unique categories{% endcomment %}
     {% for category in unique_categories %}
       <div class="sidebar-menu__category">
         <div class="sidebar-menu__category-header">
-            {% if category == "Machine Parts" %}
-                <a href="/pages/machine-parts" class="sidebar-menu__collection-link">{{ category }}</a>
-            {% else %}
-                <a href="/pages/torch-parts" class="sidebar-menu__collection-link">{{ category }}</a>
-            {% endif %}
+          {% if category == "Machine Parts" %}
+            <a href="/pages/machine-parts" class="sidebar-menu__collection-link">{{ category }}</a>
+          {% else %}
+            <a href="/pages/torch-parts" class="sidebar-menu__collection-link">{{ category }}</a>
+          {% endif %}
         </div>
-        
-        <div class="sidebar-menu__collections" >
-          {% comment %}Get collections for this category{% endcomment %}
-          
+
+        <div class="sidebar-menu__collections">
           {% assign sorted_collections = collections | sort: 'metafields.custom.category_order' %}
           {% for collection in sorted_collections %}
             {% assign selected = "" %}
             {% assign urlpart = collection.url | split: '/' %}
+            {% assign parts = request.path | split: '/' %}
             {% if parts.last == urlpart.last %}
               {% assign selected = "active" %}
             {% endif %}
             {% if collection.metafields.custom.category == category %}
-
               <div class="sidebar-menu__collection" style="order: {{ collection.metafields.custom.category_order | default: 99 }};">
-                {% if true or category == "Machine Parts" %}
-                    <a href="{{ collection.url }}" class="sidebar-menu__collection-link ">
-                      {{ collection.title }}
-                    </a>
-                 {%else%}   
-                    <span class="sidebar-menu__collection-title">{{ collection.title }}</span>
-                {% endif %}
-                {% assign parts = request.path | split: '/' %}
-                
-                
+                <a href="{{ collection.url }}" class="sidebar-menu__collection-link">
+                  {{ collection.title }}
+                </a>
 
-                <div class="sidebar-menu__products {{selected}}" >
-
-                
-                    {% for product in collection.products %}
-                      {% assign selected = "" %}
-                      {% assign urlpart = product.url | split: '/' %}
-                      {% if parts.last == urlpart.last %}
-                        {% assign selected = "active" %}
-                      {% endif %}
-                        {% unless product.metafields.custom.aftermarket %}
-                            <a href="{{ product.url }}" class="sidebar-menu__product-link {{ selected }}" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
-                              {{ product.title }}
-                            </a>
-                         {%endunless%}   
-                    {% endfor %}
-                    {% assign has_aftermarket_products = false %}
-                    {% for product in collection.products %}
-                      {% if product.metafields.custom.aftermarket %}
-                        {% assign has_aftermarket_products = true %}
-                        {% break %}
-                      {% endif %}
-                    {% endfor %}
-                    
-                    {% if has_aftermarket_products %}
-                      <div class="sidebar-menu__after-market-products" style="order: 100">
-                        <span>After Market</span>
-                        {% for product in collection.products %}
-                          {% if product.metafields.custom.aftermarket %}
-                            <a href="{{ product.url }}" class="sidebar-menu__product-link" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
-                              {{ product.title }}
-                            </a>
-                          {% endif %}
-                        {% endfor %}
-                      </div>
+                <div class="sidebar-menu__products {{ selected }}">
+                  {% for product in collection.products %}
+                    {% assign selected = "" %}
+                    {% assign urlpart = product.url | split: '/' %}
+                    {% if parts.last == urlpart.last %}
+                      {% assign selected = "active" %}
                     {% endif %}
+                    {% unless product.metafields.custom.aftermarket %}
+                      <a href="{{ product.url }}" class="sidebar-menu__product-link {{ selected }}" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
+                        {{ product.title }}
+                      </a>
+                    {% endunless %}
+                  {% endfor %}
+
+                  {% assign has_aftermarket_products = false %}
+                  {% for product in collection.products %}
+                    {% if product.metafields.custom.aftermarket %}
+                      {% assign has_aftermarket_products = true %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if has_aftermarket_products %}
+                    <div class="sidebar-menu__after-market-products" style="order: 100">
+                      <span>After Market</span>
+                      {% for product in collection.products %}
+                        {% if product.metafields.custom.aftermarket %}
+                          <a href="{{ product.url }}" class="sidebar-menu__product-link" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
+                            {{ product.title }}
+                          </a>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
                 </div>
               </div>
             {% endif %}
@@ -94,43 +86,25 @@
     {% endfor %}
   </nav>
 </div>
-{% style %}
-  .sidebar-menu__collections,
-.sidebar-menu__products
-{
-  display: none;
-}
 
-.sidebar-menu__collections.active,
-.sidebar-menu__products.active,
-.sidebar-menu__after-market-products.active
- {
-  display: flex;
-  flex-direction: column;
-}
+{% style %}
+
 {% endstyle %}
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   // Accordion for category collections
   document.querySelectorAll(".sidebar-menu__category-header a").forEach((categoryLink) => {
     categoryLink.addEventListener("click", function (e) {
       e.preventDefault();
-
       const header = this.closest(".sidebar-menu__category-header");
-      if (!header) return;
-
       const category = header.closest(".sidebar-menu__category");
-      if (!category) return;
-
       const collections = category.querySelector(".sidebar-menu__collections");
-      if (!collections) return;
 
-      // Close all other active collections
       document.querySelectorAll(".sidebar-menu__collections.active").forEach((el) => {
         if (el !== collections) el.classList.remove("active");
       });
 
-      // Toggle current
       collections.classList.toggle("active");
       this.classList.toggle("active");
     });
@@ -140,55 +114,54 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".sidebar-menu__collection-link").forEach((collectionLink) => {
     collectionLink.addEventListener("click", function (e) {
       const collection = this.closest(".sidebar-menu__collection");
-      if (!collection) return;
-
       const products = collection.querySelector(".sidebar-menu__products");
       if (!products || products.children.length === 0) return;
 
-      e.preventDefault(); // Only toggle if there are products
+      e.preventDefault();
 
-      // Close all other active product lists in the same category
       const allProducts = collection.parentElement.querySelectorAll(".sidebar-menu__products.active");
       allProducts.forEach((el) => {
         if (el !== products) el.classList.remove("active");
       });
 
-      // Toggle current
       products.classList.toggle("active");
       this.classList.toggle("active");
     });
   });
 
-  // Optional: Aftermarket toggle (does not auto-close others)
- /*  document.querySelectorAll(".sidebar-menu__after-market-products").forEach((afterMarket) => {
-    const parent = afterMarket.parentElement;
-    const toggleBtn = document.createElement("button");
-    toggleBtn.textContent = "Toggle Aftermarket";
-    toggleBtn.classList.add("aftermarket-toggle");
-    toggleBtn.addEventListener("click", () => {
-      afterMarket.classList.toggle("active");
-    });
-    parent.insertBefore(toggleBtn, afterMarket);
-  }); */
+  // Auto-open active items
   document.querySelectorAll(".sidebar-menu__products a.active, .sidebar-menu__products.active, .sidebar-menu__category-header a.active").forEach((productList) => {
     const collection = productList.closest(".sidebar-menu__collection");
     const products = productList.closest(".sidebar-menu__products");
-    if(products){
+    if (products) {
       products.classList.add("active");
-      //products.querySelector('a').classList.add("active");
     }
     if (collection) {
       collection.classList.add("active");
       collection.querySelector('a').classList.add("active");
-      
-      const collectionList = collection.parentElement; // .sidebar-menu__collections
+      const collectionList = collection.parentElement;
       if (collectionList && collectionList.classList.contains("sidebar-menu__collections")) {
-        collectionList.classList.add("active");        
+        collectionList.classList.add("active");
         collectionList.previousElementSibling.querySelector('a').classList.add("active");
-        
       }
     }
-   
   });
+
+  // Close button logic
+  const sidebarMenu = document.getElementById("sidebarMenu");
+  const closeBtn = document.getElementById("sidebarCloseBtn");
+  const openBtn = document.getElementById("sidebarOpenBtn");
+
+  if (closeBtn && sidebarMenu) {
+    closeBtn.addEventListener("click", function () {
+      sidebarMenu.style.display = "none";
+    });
+  }
+
+  if (openBtn && sidebarMenu) {
+    openBtn.addEventListener("click", function () {
+      sidebarMenu.style.display = "block";
+    });
+  }
 });
 </script>
