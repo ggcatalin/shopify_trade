@@ -88,6 +88,17 @@
 </div>
 
 {% style %}
+.sidebar-menu__collections,
+.sidebar-menu__products {
+  display: none;
+}
+
+.sidebar-menu__collections.active,
+.sidebar-menu__products.active,
+.sidebar-menu__after-market-products.active {
+  display: flex;
+  flex-direction: column;
+}
 
 {% endstyle %}
 

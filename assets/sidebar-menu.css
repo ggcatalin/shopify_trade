@@ -175,10 +175,10 @@
 .sidebar_menu_mobile_toggler{
     display: none;
 }
-
 .sidebar-menu__close{
     display: none;
 }
+
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
     .sidebar-menu {
@@ -189,18 +189,7 @@
         border-bottom: 1px solid #e5e5e5;
     }
 }
-@media screen and (max-width: 940px) {
-    .sidebar-menu__collections,
-    .sidebar-menu__products {
-        display: none;
-    }
-
-    .sidebar-menu__collections.active,
-    .sidebar-menu__products.active,
-    .sidebar-menu__after-market-products.active {
-    display: flex;
-    flex-direction: column;
-    }
+@media screen and (max-width: 989px) {
 
     .sidebar-menu__close {
         cursor: pointer;
@@ -213,9 +202,10 @@
         color: #fff;
         display: block;
     }
+  
 
-    .sidebar-menu {
-    
+    .sidebar-menu{
+           
         display: none;
     
         position: fixed;
@@ -237,4 +227,7 @@
         right: 0;
         top: 133px;;
     }
+}
+@media screen and (max-width: 575px) {
+    
 }
