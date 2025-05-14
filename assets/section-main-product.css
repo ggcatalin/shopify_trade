@@ -88,13 +88,13 @@ product-info {
     width: calc(45% - var(--grid-desktop-horizontal-spacing) / 2);
   }
 
-  .product__media-wrapper,
+  /* .product__media-wrapper,
   .product__info-wrapper{
       width: 100% !important;
       max-width: 100% !important;
       text-align: center;
       padding-right: 0!important;
-  }
+  } */
   .product__info-container {
     margin: 0 auto !important;
     max-width: 100% !important;
