@@ -156,6 +156,7 @@
                   <label for="kaliburn-products">Select a Kaliburn Product:</label>
                   <select id="kaliburn-products">
                     <option value="">-- Choose a product --</option>
+                    {% paginate collections.all.products by 1000 %}
                     {% for product in collections.all.products %}
                       {% if product.metafields.custom.torchmanufacturer == "Kaliburn" %}
                         <option 
@@ -164,6 +165,7 @@
                         </option>
                       {% endif %}
                     {% endfor %}
+                    {% endpaginate %}
                   </select>
                   <!-- The second select, initially hidden -->
                   <select id="material-select" style="display:none; margin-top:10px;">
@@ -175,6 +177,7 @@
                 <label for="hypertherm-products">Select a Hypertherm Product:</label>
                 <select id="hypertherm-products">
                   <option value="">-- Choose a product --</option>
+                  {% paginate collections.all.products by 1000 %}
                   {% for product in collections.all.products %}
                     {% if product.metafields.custom.torchmanufacturer == "Hypertherm" %}
                       <option 
@@ -183,6 +186,7 @@
                       </option>
                     {% endif %}
                   {% endfor %}
+                  {% endpaginate %}
                 </select>
                 <!-- The second select, initially hidden -->
                 <select id="material-select-hypertherm" style="display:none; margin-top:10px;">
@@ -193,7 +197,8 @@
               {% if blocks_with_content == 3 %}
                 <label for="attc-products">Select a ATTC Product:</label>
                 <select id="attc-products">
-                  <option value="">-- Choose a product --</option>
+                  <option value="">-- Choose a product --</option>  
+                  {% paginate collections.all.products by 1000 %}
                   {% for product in collections.all.products %}
                     {% if product.metafields.custom.torchmanufacturer == "ATTC" %}
                       <option 
@@ -202,6 +207,7 @@
                       </option>
                     {% endif %}
                   {% endfor %}
+                  {% endpaginate %}
                 </select>
                 <!-- The second select, initially hidden -->
                 <select id="material-select-attc" style="display:none; margin-top:10px;">
@@ -258,8 +264,9 @@
     </div>
   </div>
 </div>
-<script>
 
+<script>
+{% paginate collections.all.products by 1000 %}
 {% assign materials_string = 'sections.quick_order_list.torch_materials' | t %}
 {% assign materials = materials_string | split: "," %}
 {% assign materials_labels_string = 'sections.quick_order_list.torch_materials_labels' | t %}
@@ -337,6 +344,7 @@
       {% endif %}
     {% endfor %}
   };
+{% endpaginate %}
 </script>
 <script>
   
