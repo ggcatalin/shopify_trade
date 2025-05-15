@@ -127,8 +127,11 @@
 
 .card__inner {
   width: 100%;
+  pointer-events: none;
 }
-
+.card__inner a{
+  pointer-events: all;
+}
 .card--media .card__inner .card__content {
   position: relative;
   padding: calc(var(--image-padding) + 1rem);
