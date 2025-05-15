@@ -47,14 +47,23 @@
 
                 
                     {% for product in collection.products %}
+                      
                       {% assign selected = "" %}
                       {% assign urlpart = product.url | split: '/' %}
                       {% if parts.last == urlpart.last %}
                         {% assign selected = "active" %}
-                      {% endif %}
+                      {% endif %}   
+                                   
+                      {% assign category_title = collection.title | split: ' ' %}
+                      {% assign new_title = product.title %}
+                      {% for categ_title_part in category_title %}
+                        {% assign new_title = new_title | replace: categ_title_part, "" %}
+                      {% endfor %}
+
+                      
                         {% unless product.metafields.custom.aftermarket %}
                             <a href="{{ product.url }}" class="sidebar-menu__product-link {{ selected }}" style="order: {{ product.metafields.custom.sort_order | default: 99 }};">
-                              {{ product.title }}
+                              {{ new_title }}
                             </a>
                          {%endunless%}   
                     {% endfor %}
