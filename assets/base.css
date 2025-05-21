@@ -1112,7 +1112,12 @@ summary::-webkit-details-marker {
     width: calc(100% - var(--grid-desktop-horizontal-spacing) - 3rem);
   }
 }
-
+@media screen and (max-width: 575px) {
+    .grid--2-col-tablet-down .grid__item {
+        width: calc(100% - var(--grid-mobile-horizontal-spacing) / 2);
+        max-width: calc(100% - var(--grid-mobile-horizontal-spacing) / 2);
+    }
+}
 /* component-media */
 .media {
   display: block;
