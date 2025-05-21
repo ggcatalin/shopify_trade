@@ -651,7 +651,12 @@ h3 .icon-arrow,
   height: 100%;
   width: 100%;
 }
-
+@media(max-width: 749px){
+  .list-social .svg-wrapper {
+    width: 25px;
+    height: 25px;
+  }
+}
 /* base-details-summary */
 summary {
   cursor: pointer;
