@@ -323,7 +323,17 @@
   bottom: 12px;
   width: calc(100% - 4rem);
 }
-
+@media(max-width: 749px){
+  .card__heading {
+    width: calc(100% - 2rem);
+  }
+  .card__information {
+      padding: 1.3rem 0.5rem;
+  }
+  .card__content {
+      padding: 1rem 0.5rem;
+  }
+}
 .card__heading:last-child {
   margin-bottom: 0;
 }
