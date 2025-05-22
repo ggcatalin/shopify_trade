@@ -157,11 +157,7 @@
       </p>
     </form>
 
-    {%- if product.has_only_default_variant or product.variants_count == 1 -%}
-      <span class="quick-order-list-error">
-        {% comment %} Populated by JS {% endcomment %}
-      </span>
-    {%- else -%}
+
       <div
         class="quick-order-list__total{% unless is_modal %} gradient{% endunless %}"
         id="quick-order-list-total-{{ product.id }}-{{ section.id }}"
@@ -331,7 +327,7 @@
           {{ cart | line_items_for: product | map: "variant_id" | json }}
         </script>
       </div>
-    {%- endif -%}
+    
   </quick-order-list>
   <template id="QuickOrderListErrorTemplate-{{ product.id }}">
     <span class="svg-wrapper">
