@@ -353,8 +353,15 @@
   };
 </script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Get the 'mat' parameter from URL
+  const container = document.querySelector('.quick-order-list__table');
+  const observerOptions = {
+  childList: true,
+  subtree: true,
+};
+function logChanges(mutations) {
+  hideelementsintable()
+} 
+function hideelementsintable() {
   const urlParams = new URLSearchParams(window.location.search);
   const matParam = urlParams.get('mat');
 
@@ -377,5 +384,12 @@ document.addEventListener('DOMContentLoaded', function() {
       searchTextElement.textContent = 'Search Results: ' + materialsLabels[matParam];
     }
   }
+}
+
+const observer = new MutationObserver(logChanges);
+observer.observe(container, observerOptions);
+document.addEventListener('DOMContentLoaded', function() {
+  hideelementsintable();
+ 
 });
 </script>
