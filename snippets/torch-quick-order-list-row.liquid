@@ -57,7 +57,7 @@
 
   <td class="variant-item__details large-up-hide">
     <div class="variant-item__info">
-      <span class="variant-item__name h4 break">{{ 'sections.quick_order_list.in_diagram' | t }}: {{ item.metafields.custom.indiagram | round }}</span>
+      <span class="variant-item__name h4 break">{{ 'sections.quick_order_list.in_diagram' | t }}: {{ item.metafields.custom.indiagram | escape }}</span>
       
       <span class="variant-item__name h4 break">{{ item.title | escape }}</span>
        <span class="variant-item__name h4 break">{{ item.metafields.custom.part_no | escape }}</span>
