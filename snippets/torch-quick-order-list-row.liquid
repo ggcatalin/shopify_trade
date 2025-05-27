@@ -18,6 +18,7 @@
   id="Variant-{{ variant.id }}"
   data-variant-id="{{ variant.id }}" 
   data-mat="{{material}}"
+  style="order:{{ item.metafields.custom.indiagram | escape }};"
 >
   <td class="variant-item__indiagram small-hide medium-hide">
     <span class="variant-item__name h4 break">{{ item.metafields.custom.indiagram | escape }}</span>
