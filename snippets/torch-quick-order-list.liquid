@@ -30,7 +30,7 @@
       method="post"
       id="QuickOrderList"
     >
-      {% paginate product.variants by section.settings.variants_per_page %}
+      {% paginate product.variants by 500 %}
         <div class="quick-order-list__container" id="main-variant-items">
         <span class="search_text"></span>
           <table class="quick-order-list__table">
