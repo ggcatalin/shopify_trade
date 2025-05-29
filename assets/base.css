@@ -2846,12 +2846,14 @@ details[open] > .header__menu-item .icon-caret {
   position: relative;
 }
 .header__active-menu-item:after{
-  content: '';
-  background: #ff0000;
-  width: 100%;
-  height: 2px;
-  position: absolute;
-  bottom: 0;
+  content: "";
+    background: red;
+    width: calc(100% + 1px);
+    height: 2px;
+    position: absolute;
+    bottom: -3px;
+    left: -1px;
+    right: 0px;
 }
 
 .header__menu-item:hover .header__active-menu-item {
