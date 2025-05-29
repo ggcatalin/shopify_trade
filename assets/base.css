@@ -2847,7 +2847,7 @@ details[open] > .header__menu-item .icon-caret {
 }
 .header__active-menu-item:after{
   content: "";
-    background: red;
+    background: rgb(var(--color-foreground));;
     width: calc(100% + 1px);
     height: 2px;
     position: absolute;
