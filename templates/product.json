@@ -44,7 +44,7 @@
     "quick-order-list": {
       "type": "quick-order-list",
       "settings": {
-        "variants_per_page": 500,
+        "variants_per_page": 50,
         "show_image": false,
         "show_sku": false,
         "color_scheme": "scheme-2",
