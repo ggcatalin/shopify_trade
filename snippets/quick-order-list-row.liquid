@@ -13,6 +13,7 @@
 {% assign cart_qty = cart | item_count_for_variant: variant.id %}
 {% # theme-check-enable %}
 
+{%- if item.metafields.custom.invisible != true-%}
 <tr
   class="variant-item{% unless show_image %} variant-item--no-media{% endunless %}{% if item.available and item.unit_price_measurement %} variant-item--unit-price{% endif %}"
   id="Variant-{{ variant.id }}"
@@ -477,4 +478,5 @@
       {%- endfor -%}
     </ul>
   </volume-pricing>
+{%- endif -%}
 {%- endif -%}
